@@ -18,20 +18,20 @@ function EquipmentList() {
         dispatch({ type: 'FETCH_EQUIPMENT' })
     }, []);
 
-    const equipments = useSelector(store => store.equipmentReducer);
+    const bikes = useSelector(store => store.equipmentReducer);
 
     return (
         <div className='equipment-list'>
-            <h1>equipmentS!</h1>
-            {equipments.map( equipment =>
-                <div key={equipment.id}>
-                    <h4>equipment id: {equipment.id}</h4>
-                    <h4>Make:<p>{equipment.make}</p></h4>
-                    <h4>Model: {equipment.model}</h4>
-                    <h4>Year: {equipment.year}</h4>
+            {/* <h1>BIKES!</h1>
+            {bikes.map( bike =>
+                <div key={bike.id}>
+                    <h4>bike id: {bike.id}</h4>
+                    <h4>Make:<p>{bike.make}</p></h4>
+                    <h4>Model: {bike.model}</h4>
+                    <h4>Year: {bike.year}</h4>
                     <br/> <br/>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }
