@@ -1,0 +1,9 @@
+.workOrder-list {
+    text-align: center;
+    margin: auto;
+    width: 60%;
+}
+
+.workOrder-list h1 {
+    margin: 2em;
+}
