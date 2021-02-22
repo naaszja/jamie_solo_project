@@ -19,9 +19,10 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
-import JobList from '../JobList/JobList';
+import WorkOrderList from '../WorkOrderList/WorkOrderList';
 
 import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -108,9 +109,9 @@ function App() {
             // - if logged in, redirects to "/user"
             // - else shows LandingPage at "/home"
             exact
-            path="/jobList"
+            path="/workOrders"
           >
-            <JobList />
+            <WorkOrderList />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
