@@ -26,12 +26,12 @@ function EquipmentList() {
         <div className='equipment-list'>
             <h1>BIKES!</h1>
             {bikes.map( bike =>
-                <div key={bike.id}>
+                <div className="bike-div" key={bike.id}>
                     <h4>bike id: {bike.id}</h4>
                     <h4>Make:<p>{bike.make}</p></h4>
                     <h4>Model: {bike.model}</h4>
                     <h4>Year: {bike.year}</h4>
-                    <br/> <br/>
+                    <hr/>
                 </div>
             )}
         </div>

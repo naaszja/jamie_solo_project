@@ -24,12 +24,12 @@ function WorkOrderList() {
         <div className='workOrder-list'>
             <h1>Work Orders</h1>
             {jobs.map(job =>
-                <div key={job.id}>
+                <div className="workOrder-div" key={job.id}>
                     <h4>Job id: {job.id}</h4>
                     <h4>Services:<p>{job.services}</p></h4>
                     <h4>Estimate: {job.total_price}</h4>
                     <h4>Bike id: {job.bike_id}</h4>
-                    <br/> <br/>
+                    <hr/>
                 </div>
             )}
         </div>
