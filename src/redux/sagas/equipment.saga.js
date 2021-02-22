@@ -7,8 +7,8 @@ function* fetchEquipment(action) {
     yield put({type: 'SET_EQUIPMENT', payload: response.data }) 
 }
 
-function* workOrderSaga() {
+function* equipmentSaga() {
     yield takeEvery('FETCH_EQUIPMENT', fetchEquipment);
 }
 
-export default workOrderSaga;
+export default equipmentSaga;

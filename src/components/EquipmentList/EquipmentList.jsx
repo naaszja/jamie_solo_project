@@ -19,10 +19,12 @@ function EquipmentList() {
     }, []);
 
     const bikes = useSelector(store => store.equipmentReducer);
+    debugger;
+    console.log('Bikes:', bikes);
 
     return (
         <div className='equipment-list'>
-            {/* <h1>BIKES!</h1>
+            <h1>BIKES!</h1>
             {bikes.map( bike =>
                 <div key={bike.id}>
                     <h4>bike id: {bike.id}</h4>
@@ -31,7 +33,7 @@ function EquipmentList() {
                     <h4>Year: {bike.year}</h4>
                     <br/> <br/>
                 </div>
-            )} */}
+            )}
         </div>
     );
 }

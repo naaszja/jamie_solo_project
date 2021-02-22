@@ -20,16 +20,21 @@ function UserPage() {
   const history = useHistory();
 
   // Function to navigate to the work orders page
-  const getJobs = () => {
-    console.log('in get jobs');
+  const getWorkOrders = () => {
     history.push('/workOrders');
+  }
+
+  // Function to navigate to the work customer list page
+  const getEquipmentList = () => {
+    history.push('/equipmentList');
   }
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <p><Button onClick={getJobs}>View Job List</Button></p>
+      <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>
+      <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
       <LogOutButton className="btn" />
     </div>
   );
