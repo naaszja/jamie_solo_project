@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import EquipmentInput from '../EquipmentInput/EquipmentInput';
 
 function EquipmentList() {
 
@@ -19,18 +20,19 @@ function EquipmentList() {
     }, []);
 
     const bikes = useSelector(store => store.equipmentReducer);
-    debugger;
     console.log('Bikes:', bikes);
 
+    const serviceHistory = () => {
+        console.log('in serviceHistory()');
+    }
     return (
         <div className='equipment-list'>
+            <EquipmentInput/>
             <h1>BIKES!</h1>
             {bikes.map( bike =>
                 <div className="bike-div" key={bike.id}>
-                    <h4>bike id: {bike.id}</h4>
-                    <h4>Make:<p>{bike.make}</p></h4>
-                    <h4>Model: {bike.model}</h4>
-                    <h4>Year: {bike.year}</h4>
+                    <p>bike id: {bike.id}</p>
+                    <p>Make:{bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="dark" size="sm" onClick={serviceHistory}>Service History</Button></p>
                     <hr/>
                 </div>
             )}
