@@ -24,9 +24,14 @@ function UserPage() {
     history.push('/workOrders');
   }
 
-  // Function to navigate to the work customer list page
+  // Function to navigate to the equipment page
   const getEquipmentList = () => {
     history.push('/equipmentList');
+  }
+
+  // Function to navigate to the work customer list page
+  const getCustomerList = () => {
+    history.push('/customerList');
   }
 
   return (
@@ -35,6 +40,7 @@ function UserPage() {
       <p>Your ID is: {user.id}</p>
       <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>
       <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
+      <p><Button onClick={getCustomerList}>View Customer List</Button></p>
       <LogOutButton className="btn" />
     </div>
   );
