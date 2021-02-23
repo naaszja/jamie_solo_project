@@ -38,9 +38,9 @@ function UserPage() {
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
-      <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>
-      <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
       <p><Button onClick={getCustomerList}>View Customer List</Button></p>
+      <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
+      <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>
       <LogOutButton className="btn" />
     </div>
   );

@@ -26,7 +26,11 @@ Container
 Button
 -------------------------------------------------------------------------------- */
 
-.btn {
+  /* This section of css was pre-applied to the buttons in the project. 
+  I am using Bootstrap so this was causing a complication. */
+
+
+/* .btn {
   display: inline-block;
   padding: 10px 20px;
   border-color: #014041;
@@ -74,7 +78,7 @@ Button
   background-color: transparent;
   border-color: #008183;
   color: #008183;
-}
+} */
 
 /* --------------------------------------------------------------------------------
 Alert
