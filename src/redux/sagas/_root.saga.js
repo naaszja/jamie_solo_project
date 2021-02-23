@@ -4,6 +4,7 @@ import registrationSaga from './registration.saga';
 import userSaga from './user.saga';
 import workOrderSaga from './work_order.saga';
 import equipmentSaga from './equipment.saga';
+import customerSaga from './customer.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -19,5 +20,6 @@ export default function* rootSaga() {
     userSaga(),
     workOrderSaga(),
     equipmentSaga(),
+    customerSaga(),
   ]);
 }

@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import WorkOrderList from '../WorkOrderList/WorkOrderList';
 import EquipmentList from '../EquipmentList/EquipmentList';
+import CustomerList from '../CustomerList/CustomerList';
 
 import './App.css';
 
@@ -123,6 +124,16 @@ function App() {
             path="/equipmentList"
           >
             <EquipmentList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/customerList"
+          >
+            <CustomerList />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

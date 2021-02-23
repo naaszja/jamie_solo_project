@@ -3,7 +3,7 @@ const equipmentReducer = (state = [], action) => {
         case 'SET_EQUIPMENT':
             const newState = action.payload;
             return newState;
-        case 'USET_EQUIPMENT':
+        case 'UNSET_EQUIPMENT':
             return [];
         default:
             return state;
