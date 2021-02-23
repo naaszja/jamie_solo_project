@@ -30,23 +30,21 @@ function CustomerInput() {
 
         console.log(`new customer is:`, newCustomer);
 
+        dispatch({
+            type: 'ADD_CUSTOMER',
+            payload: {
+                firstName: firstName,
+                lastName: lastName,
+                phone: phone,
+                email: email,
+                user_id: store.user.id,
+            }
+        });
+        
         setFirstName('');
         setLastName('');
         setPhone('');
         setEmail('');
-     
-
-        // dispatch({
-        //     type: 'ADD_ITEM',
-        //     payload: {
-        //         description: descriptionInput,
-        //         item_url: imageInput,
-        //         user_id: store.user.id,
-        //     }
-        // });
-
-        // setDescriptionInput('');
-        // setImageInput('');
     }
 
 
