@@ -57,7 +57,7 @@ function UserInput() {
             <p><label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
             <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} /></p>
             <p><label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
-            <Button variant="outline-primary" size="sm" onClick={addUser}>Add Customer Info</Button>
+            <Button variant="outline-primary" size="sm" onClick={addUser}>Update Information</Button>
         </div>
     );
 }

@@ -60,7 +60,7 @@ function* currentCustomer(action) {
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
   yield takeLatest('FETCH_CUSTOMERS', fetchCustomers);
-  yield takeLatest('ADD_CUSTOMER', addCustomer);
+  yield takeLatest('ADD_USER', addCustomer);
   yield takeLatest('DELETE_CUSTOMER', deleteCustomer);
   yield takeLatest('CURRENT_CUSTOMER', currentCustomer);
 }

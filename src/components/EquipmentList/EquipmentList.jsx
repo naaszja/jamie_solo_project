@@ -19,20 +19,25 @@ function EquipmentList() {
         dispatch({ type: 'FETCH_EQUIPMENT' })
     }, []);
 
+    const user = useSelector(store => store.user);
     const bikes = useSelector(store => store.equipmentReducer);
-    console.log('Bikes:', bikes);
 
-    const serviceHistory = () => {
-        console.log('in serviceHistory()');
+    const serviceHistory = (event) => {
+        console.log('in serviceHistory() with an id of:', event.target.value);
     }
+
+    const deleteEquipment = (event) => {
+        console.log('In deleteEquipmednt() with an id of:', event.target.value);
+        dispatch({type: 'DELETE_EQUIPMENT', payload: event.target.value})
+    }
+
     return (
         <div className='equipment-list'>
             <EquipmentInput/>
             <h1>BIKES!</h1>
             {bikes.map( bike =>
                 <div className="bike-div" key={bike.id}>
-                    <p>bike id: {bike.id}</p>
-                    <p>Make:{bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="primary" size="sm" onClick={serviceHistory}>Service History</Button></p>
+                    Bike id: {bike.id} | Make: {bike.make} | Model: {bike.model} | Year: {bike.year} <Button variant="primary" size="sm" onClick={serviceHistory} value={bike.id}>Service History</Button> {(user.accesslvl > 0) ? <Button variant="danger" size="sm" onClick={deleteEquipment} value={bike.id}>Delete</Button> : <></>}
                     <hr/>
                 </div>
             )}

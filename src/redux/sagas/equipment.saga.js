@@ -10,7 +10,6 @@ function* fetchEquipment(action) {
 function* addEquipment(action) {
     try {
         console.log(`action.payload is:`, action.payload);
-        debugger;
         yield axios.post(`api/equipmentList`, action.payload);
         yield put({ type: 'FETCH_EQUIPMENT' });
     } catch (error) {
@@ -19,9 +18,21 @@ function* addEquipment(action) {
 
 }
 
+function* deleteEquipment(action) {
+    try {
+        console.log(`action.payload is:`, action.payload);
+        debugger;
+        yield axios.delete(`api/equipmentList/${action.payload}`);
+        yield put({ type: 'FETCH_EQUIPMENT' });
+    } catch (error) {
+        console.log('Error deleting equipment', error);
+    }
+}
+
 function* equipmentSaga() {
     yield takeEvery('FETCH_EQUIPMENT', fetchEquipment);
     yield takeEvery('ADD_EQUIPMENT', addEquipment);
+    yield takeEvery('DELETE_EQUIPMENT', deleteEquipment);
 }
 
 export default equipmentSaga;

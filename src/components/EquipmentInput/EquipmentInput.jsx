@@ -13,7 +13,6 @@ function EquipmentInput() {
     const [make, setMake] = useState('');
     const [model, setModel] = useState('');
     const [year, setYear] = useState('');
-    const [person_id, setPerson_id] = useState(store.user.id);
 
     const addEquipment = () => {
 
@@ -26,19 +25,14 @@ function EquipmentInput() {
             make,
             model,
             year,
-            person_id,
+            user_id: store.user.id,
         }
 
         console.log(`new equipment is:`, newEquipment);
 
         dispatch({
             type: 'ADD_EQUIPMENT',
-            payload: {
-                make,
-                model,
-                year,
-                person_id,
-            }
+            payload: newEquipment,
         });
 
         setMake('');
