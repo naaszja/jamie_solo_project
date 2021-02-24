@@ -2,9 +2,9 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './CustomerInput.css';
+import './UserInput.css';
 
-function CustomerInput() {
+function UserInput() {
 
     const dispatch = useDispatch();
     const store = useSelector(store => store);
@@ -13,31 +13,33 @@ function CustomerInput() {
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
     const [email, setEmail] = useState('');
+    const [id, setId] = useState(store.user.id);
 
-    const addCustomer = () => {
+    const addUser = () => {
 
            if (!firstName || !lastName || !phone || !email) {
             alert('Error! Please fill in all fields.');
             return;
         }
 
-        const newCustomer = {
+        const newUser = {
             firstName,
             lastName,
             phone,
             email,
+            id,
         }
 
-        console.log(`new customer is:`, newCustomer);
+        console.log(`new user is:`, newUser);
 
         dispatch({
-            type: 'ADD_CUSTOMER',
+            type: 'ADD_USER',
             payload: {
                 firstName: firstName,
                 lastName: lastName,
                 phone: phone,
                 email: email,
-                user_id: store.user.id,
+                id: id,
             }
         });
         
@@ -50,15 +52,15 @@ function CustomerInput() {
 
     return (
         <div id='customer-input'>
-            <h3>Customer Information</h3>
-            <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
-            <label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
-            <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} />
-           <label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
-            <Button variant="outline-primary" size="sm" onClick={addCustomer}>Add Customer</Button>
+            <h3>Customer Information</h3> 
+            <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} /></p>
+            <p><label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
+            <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} /></p>
+            <p><label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
+            <Button variant="outline-primary" size="sm" onClick={addUser}>Add Customer Info</Button>
         </div>
     );
 }
 
-export default CustomerInput;
+export default UserInput;
 

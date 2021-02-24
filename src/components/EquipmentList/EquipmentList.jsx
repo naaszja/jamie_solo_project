@@ -32,7 +32,7 @@ function EquipmentList() {
             {bikes.map( bike =>
                 <div className="bike-div" key={bike.id}>
                     <p>bike id: {bike.id}</p>
-                    <p>Make:{bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="dark" size="sm" onClick={serviceHistory}>Service History</Button></p>
+                    <p>Make:{bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="primary" size="sm" onClick={serviceHistory}>Service History</Button></p>
                     <hr/>
                 </div>
             )}

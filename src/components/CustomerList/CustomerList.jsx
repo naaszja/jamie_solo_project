@@ -9,7 +9,7 @@ import { useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerList.css';
-import CustomerInput from '../CustomerInput/CustomerInput';
+import UserInput from '../UserInput/UserInput';
 
 function CustomerList() {
 
@@ -22,24 +22,23 @@ function CustomerList() {
     const customers = useSelector(store => store.customerReducer);
     console.log('Customers:', customers);
 
-    const addCustomer = () => {
-        console.log('in addCustomer function')
+    const deleteCustomer = (e) => {
+        dispatch({ type: 'DELETE_CUSTOMER', payload: e.target.value })
     }
-
-    // onClick={addCustomer}
 
     return (
         <div className='customer-list'>
-            <CustomerInput />
-            {customers.map( customer =>
+            <UserInput />
+            {/* {customers.map( customer =>
                 <div className="customer-div" key={customer.id}>
                     <p>Customer ID: {customer.id}</p>
                     <p>Name: {customer.lastName}, {customer.firstName}</p>
                     <p>Phone: {customer.phone}</p>
                     <p>Email: {customer.email}</p>
+                    <Button size="sm" variant="danger" value={customer.id} onClick={deleteCustomer}>Delete Customer</Button>
                     <hr/>
                 </div>
-            )}
+            )} */}
         </div>
     );
 }

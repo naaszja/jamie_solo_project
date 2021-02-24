@@ -30,7 +30,6 @@ function EquipmentInput() {
         }
 
         console.log(`new equipment is:`, newEquipment);
-        debugger;
 
         dispatch({
             type: 'ADD_EQUIPMENT',

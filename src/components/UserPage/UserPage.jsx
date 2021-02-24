@@ -34,10 +34,14 @@ function UserPage() {
     history.push('/customerList');
   }
 
+  // Set the access setting based on the accesslvl in the DB
+const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
+
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
+      <p>Access Level: {access} </p>
       <p><Button onClick={getCustomerList}>View Customer List</Button></p>
       <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
       <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>

@@ -7,8 +7,19 @@ const {
 
 // GET route
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT * FROM "person" ORDER BY "firstName" ASC;`;
+    const queryText = `SELECT * FROM "user" ORDER BY "lastName" ASC;`;
     pool.query(queryText)
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('Error fetching customers:', error);
+        });
+});
+
+// GET and store the information for the current customer
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const queryText = `SELECT * FROM "user" WHERE "user_id" = $1`;
+    pool.query(queryText, [req.params.user_id])
         .then((result) => {
             res.send(result.rows);
         }).catch((error) => {
@@ -22,16 +33,30 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newCustomer = req.body;
     console.log(newCustomer);
-    const queryText = `INSERT INTO "person" ("firstName", "lastName", "phone", "email", "user_id")
-    VALUES ($1, $2, $3, $4, $5)`;
-    debugger;
-    pool.query(queryText, [newCustomer.firstName, newCustomer.lastName, newCustomer.phone, newCustomer.email, newCustomer.user_id])
+    const queryText = `UPDATE "user" SET "firstName" = $1, "lastName" = $2, "phone" = $3, "email" = $4
+    WHERE "id" = $5;`;
+    pool.query(queryText, [newCustomer.firstName, newCustomer.lastName, newCustomer.phone, newCustomer.email, newCustomer.id])
         .then((result) => {
-            res.sendStatus(201);
+            console.log('in the .then for our post route');
+            res.sendStatus(200);
         }).catch((error) => {
             console.log('Error adding new customer', error);
             res.sendStatus(500);
         })
 });
+
+// DELETE Route
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(req.params);
+    debugger;
+    const queryText = `DELETE FROM "user" WHERE id=$1;`;
+    pool.query(queryText, [req.params.id])
+        .then((result) => {
+            res.sendStatus(204)
+        }).catch((error) => {
+            console.log('Error deletting customer!', error);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;
