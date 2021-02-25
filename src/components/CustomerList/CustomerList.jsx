@@ -22,7 +22,16 @@ function CustomerList() {
     const user = useSelector(store => store.user);
     console.log('User:', user);
 
-    const deleteCustomer = (e) => {
+    // Variable to hold status of edit mode
+    let editMode = false;
+
+    const updateUser = () => {
+        debugger;
+        console.log('in updateUser()');
+        editMode = true;
+    }
+
+    const deleteUser = (e) => {
         dispatch({ type: 'DELETE_CUSTOMER', payload: e.target.value })
     }
 
@@ -34,10 +43,11 @@ function CustomerList() {
                 <p>Name: {user.lastName}, {user.firstName}</p>
                 <p>Phone: {user.phone}</p>
                 <p>Email: {user.email}</p>
-                <Button size="sm" variant="danger" value={user.id} onClick={deleteCustomer}>Delete Customer</Button>
+                <Button variant="outline-success" size="sm" value={user.id} onClick={updateUser}>Update Information</Button>
+                <Button size="sm" variant="outline-danger" value={user.id} onClick={deleteUser}>Delete Customer</Button>
                 <hr />
+                <UserInput editMode={editMode}/>
             </div>
-            <><h3>Update Information</h3><br /><UserInput /></>
         </div>
     );
 }

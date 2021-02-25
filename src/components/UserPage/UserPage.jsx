@@ -29,7 +29,7 @@ function UserPage() {
     history.push('/equipmentList');
   }
 
-  // Function to navigate to the work customer list page
+  // Function to navigate to the customer information page
   const getCustomerList = () => {
     history.push('/customerList');
   }
@@ -42,6 +42,8 @@ const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <p>Access Level: {access} </p>
+      <h4>Current Work Orders</h4>
+      <hr/>
       <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
       <p>{(user.accesslvl === 1) ? <><Button onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
       <p><Button onClick={getCustomerList}>Update Personal Information</Button></p>

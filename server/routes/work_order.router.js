@@ -16,6 +16,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
+// GET route
+router.get('/:id', rejectUnauthenticated, (req, res) => {
+    const jobId = req.params.id;
+    const queryText = `SELECT * FROM "work_orders" WHERE "id" = $1;`;
+    pool.query(queryText, [jobId])
+        .then((result) => {
+            console.log('returning job with id of:', jobId);
+            res.send(result.rows);
+        }).catch ((error) => { 
+            console.log('Error fetching work orders:', error);
+        });
+});
+
 /**
  * POST route template
  */

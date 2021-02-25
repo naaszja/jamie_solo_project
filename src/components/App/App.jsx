@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import WorkOrderList from '../WorkOrderList/WorkOrderList';
+import WorkOrder from '../WorkOrder/WorkOrder';
 import EquipmentList from '../EquipmentList/EquipmentList';
 import CustomerList from '../CustomerList/CustomerList';
 
@@ -114,6 +115,16 @@ function App() {
             path="/workOrders"
           >
             <WorkOrderList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows LandingPage at "/home"
+            exact
+            path="/workOrder"
+          >
+            <WorkOrder />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -1,13 +1,20 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserInput.css';
 
-function UserInput() {
+function UserInput({editMode}) {
 
     // Instantiate to allow dispatching actions
     const dispatch = useDispatch();
+
+    // Capture the value of the editMode prop
+    const edit = editMode;
+
+    // Instantiate to allow navigation
+    const history = useHistory();
 
     // Bring in the user reducer so we have access to the user info
     const user = useSelector(store => store.user);
@@ -56,19 +63,27 @@ function UserInput() {
         setLastName('');
         setPhone('');
         setEmail('');
+
+        history.push('/customerList');
+
     }
 
+    if (edit === true) {
+        return (
+            <div id='update-input'>
+                <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+                    <label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
+                <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                    <label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
+                <Button variant="outline-primary" size="sm" onClick={addUser}>Save Information</Button>
+            </div>
+        );
+    } else {
+        return (
+            <><h2>EDIT_MODE_FALSE</h2></>
+        )
+    }
 
-    return (
-        <div id='update-input'>
-            <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
-                <label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
-            <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} />
-                <label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
-            <Button variant="outline-primary" size="sm" onClick={addUser}>Update Information</Button>
-        </div>
-    );
 }
 
 export default UserInput;
-
