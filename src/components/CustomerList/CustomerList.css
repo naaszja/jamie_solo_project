@@ -1,16 +1,16 @@
-.customer-list {
+.user-list {
     text-align: center;
     margin: auto;
     width: 60%;
 }
 
-.customer-list h1 {
+.user-list h1 {
     margin: 2em;
     color: dodgerblue;
     text-decoration: underline;
 }
 
-.customer-div {
+.user-div {
     width: 40%;
     padding: 0;
     display: inline-block;

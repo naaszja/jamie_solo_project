@@ -19,26 +19,25 @@ function CustomerList() {
         dispatch({ type: 'FETCH_CUSTOMERS' })
     }, []);
 
-    const customers = useSelector(store => store.customerReducer);
-    console.log('Customers:', customers);
+    const user = useSelector(store => store.user);
+    console.log('User:', user);
 
     const deleteCustomer = (e) => {
         dispatch({ type: 'DELETE_CUSTOMER', payload: e.target.value })
     }
 
     return (
-        <div className='customer-list'>
-            <UserInput />
-            {/* {customers.map( customer =>
-                <div className="customer-div" key={customer.id}>
-                    <p>Customer ID: {customer.id}</p>
-                    <p>Name: {customer.lastName}, {customer.firstName}</p>
-                    <p>Phone: {customer.phone}</p>
-                    <p>Email: {customer.email}</p>
-                    <Button size="sm" variant="danger" value={customer.id} onClick={deleteCustomer}>Delete Customer</Button>
-                    <hr/>
-                </div>
-            )} */}
+        <div className='user-list'>
+            <div className="user-div" key={user.id}>
+                <h3>Customer Information</h3>
+                <p>Customer ID: {user.id}</p>
+                <p>Name: {user.lastName}, {user.firstName}</p>
+                <p>Phone: {user.phone}</p>
+                <p>Email: {user.email}</p>
+                <Button size="sm" variant="danger" value={user.id} onClick={deleteCustomer}>Delete Customer</Button>
+                <hr />
+            </div>
+            <><h3>Update Information</h3><br /><UserInput /></>
         </div>
     );
 }
