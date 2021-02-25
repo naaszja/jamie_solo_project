@@ -5,13 +5,13 @@ import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserInput.css';
 
-function UserInput({editMode}) {
+function UserInput() {
 
     // Instantiate to allow dispatching actions
     const dispatch = useDispatch();
 
     // Capture the value of the editMode prop
-    const edit = editMode;
+    const edit = true;
 
     // Instantiate to allow navigation
     const history = useHistory();
@@ -64,8 +64,7 @@ function UserInput({editMode}) {
         setPhone('');
         setEmail('');
 
-        history.push('/customerList');
-
+        window.location.reload();
     }
 
     if (edit === true) {
