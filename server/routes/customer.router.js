@@ -16,20 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
-// GET and store the information for the current customer
-router.get('/:id', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT * FROM "user" WHERE "user_id" = $1`;
-    pool.query(queryText, [req.params.user_id])
-        .then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            console.log('Error fetching customers:', error);
-        });
-});
-
-/**
- * POST route template
- */
+// PUT route
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newCustomer = req.body;
     console.log(newCustomer);
@@ -37,7 +24,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
     WHERE "id" = $5;`;
     pool.query(queryText, [newCustomer.firstName, newCustomer.lastName, newCustomer.phone, newCustomer.email, newCustomer.id])
         .then((result) => {
-            console.log('in the .then for our post route');
+            console.log(`User information updated successfully.`);
             res.sendStatus(200);
         }).catch((error) => {
             console.log('Error adding new customer', error);
@@ -45,7 +32,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// DELETE Route
+// DELETE route
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log(req.params);
     debugger;

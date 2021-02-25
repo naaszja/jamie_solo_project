@@ -43,7 +43,7 @@ const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
       <p>Your ID is: {user.id}</p>
       <p>Access Level: {access} </p>
       <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
-      <p><Button onClick={getWorkOrders}>View Work Orders</Button></p>
+      <p>{(user.accesslvl === 1) ? <><Button onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
       <p><Button onClick={getCustomerList}>Update Personal Information</Button></p>
       <LogOutButton className="btn" />
     </div>

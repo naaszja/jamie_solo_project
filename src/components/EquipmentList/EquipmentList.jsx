@@ -27,7 +27,7 @@ function EquipmentList() {
     }
 
     const deleteEquipment = (event) => {
-        console.log('In deleteEquipmednt() with an id of:', event.target.value);
+        console.log('In deleteEquipment() with an id of:', event.target.value);
         dispatch({ type: 'DELETE_EQUIPMENT', payload: event.target.value })
     }
 

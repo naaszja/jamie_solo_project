@@ -25,11 +25,8 @@ function WorkOrderList() {
             <h1>Work Orders</h1>
             {jobs.map(job =>
                 <div className="workOrder-div" key={job.id}>
-                    <h4>Job id: {job.id}</h4>
-                    <h4>Services:<p>{job.services}</p></h4>
-                    <h4>Estimate: {job.total_price}</h4>
-                    <h4>Bike id: {job.bike_id}</h4>
-                    <hr/>
+                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} <Button variant="outline-warning" size="sm">Select Job</Button>
+                    <hr />
                 </div>
             )}
         </div>
