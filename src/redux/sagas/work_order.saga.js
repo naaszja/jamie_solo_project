@@ -10,7 +10,7 @@ function* fetchWorkOrders(action) {
 function* fetchSingleWorkOrder(action) {
     const response = yield axios.get(`/api/workOrders/${action.payload}`) ;
     console.log(`Response.data is:`, response.data);
-    yield put({type: 'SET_SINGLE_WORKORDER', payload: response.data }) 
+    yield put({type: 'SET_SINGLE_WORKORDER', payload: response.data[0] }) 
 }
 
 function* workOrderSaga() {

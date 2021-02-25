@@ -43,10 +43,11 @@ function EquipmentInput() {
 
     return (
         <div id='customer-input'>
-            <h3>Equipment Information</h3>
-            <p><label htmlFor='setMake'>Make:</label><input value={make} onChange={(e) => { setMake(e.target.value) }} /></p>
-            <p><label htmlFor='setModel'>Model:</label><input value={model} onChange={(e) => { setModel(e.target.value) }} /></p>
-            <p><label htmlFor='setYear'>Year:</label><input value={year} onChange={(e) => { setYear(e.target.value) }} /></p>
+            <h3>To enter a new bike, please fill in the fields below.</h3>
+            <br/>
+            <label htmlFor='setMake'>Make:</label><input value={make} onChange={(e) => { setMake(e.target.value) }} />
+            <label htmlFor='setModel'>Model:</label><input value={model} onChange={(e) => { setModel(e.target.value) }} />
+            <label htmlFor='setYear'>Year:</label><input value={year} onChange={(e) => { setYear(e.target.value) }} />
             <Button variant="outline-primary" size="sm" onClick={addEquipment}>Add Equipment</Button>
         </div>
     );

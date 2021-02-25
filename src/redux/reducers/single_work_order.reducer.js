@@ -10,4 +10,4 @@ const singleWorkOrderReducer = (state = [], action) => {
     }
 };
 
-export default workOrderReducer;
+export default singleWorkOrderReducer;

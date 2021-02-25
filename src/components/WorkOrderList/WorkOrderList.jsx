@@ -21,11 +21,9 @@ function WorkOrderList() {
     }, []);
 
     const jobs = useSelector(store => store.workOrderReducer);
-    console.log(jobs);
 
     const fetchSingleWorkOrder = (event) => {
         dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value});
-        debugger;
         history.push('/workOrder');
     }
 

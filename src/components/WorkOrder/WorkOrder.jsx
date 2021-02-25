@@ -12,25 +12,26 @@ import Col from 'react-bootstrap/Col';
 
 function WorkOrder() {
 
-    const dispatch = useDispatch();
     const history = useHistory();
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload})
-    }, []);
-
     const job = useSelector(store => store.singleWorkOrderReducer);
-    console.log(job);
-
+    console.log(`Job is :`, job);
 
     return (
         <div className='workOrder'>
-            <h3>SINGLE_WORKORDER_PAGE</h3>
-            {/* <h1>Work Orders</h1>
-                <div className="workOrder-div" key={job.id}>
-                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | <Button variant="outline-warning" size="sm" onClick={() => history.push('/workOrder')}>Select Job</Button>
-                    <hr />
-                </div> */}
+            <div className="workOrder-div" key={job.id}>
+                <p> Job id: {job.id}</p>
+                <hr />
+                <p>Services:</p>
+                <p>{job.services}</p>
+                <hr />
+                <p>Estimate: ${job.total_price}</p>
+                <hr />
+                <p>Bike id: {job.bike_id}</p>
+                <hr />
+                <p><Button variant="outline-success" size="sm" >Complete Job</Button></p>
+                <hr />
+            </div>
         </div>
     );
 }
