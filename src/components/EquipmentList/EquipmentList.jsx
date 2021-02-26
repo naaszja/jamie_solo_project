@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './EquipmentList.css';
 //Bring in bootstrap components and css
@@ -16,14 +17,15 @@ function EquipmentList() {
     const user = useSelector(store => store.user);
     const bikes = useSelector(store => store.equipmentReducer);
 
+    const history = useHistory();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch({ type: 'FETCH_EQUIPMENT', payload: user })
     }, []);
 
-    const serviceHistory = (event) => {
-        console.log('in serviceHistory() with an id of:', event.target.value);
+    const checkIn = (event) => {
+        history.push(`/checkin/${event.target.value}`);
     }
 
     const deleteEquipment = (event) => {
@@ -36,7 +38,7 @@ function EquipmentList() {
             <h1>BIKES!</h1>
             {bikes.map(bike =>
                 <div className="bike-div" key={bike.id}>
-                    Bike id: {bike.id} | Make: {bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="primary" size="sm" onClick={serviceHistory} value={bike.id}>Work Order</Button> | <Button variant="danger" size="sm" onClick={deleteEquipment} value={bike.id}>Delete</Button>
+                    Bike id: {bike.id} | Make: {bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="primary" size="sm" onClick={checkIn} value={bike.id}>Check-In</Button> | <Button variant="danger" size="sm" onClick={deleteEquipment} value={bike.id}>Delete</Button>
                     <hr />
                 </div>
             )}

@@ -19,3 +19,17 @@
 .radio-replace {
     color: crimson;
 }
+
+#radios-div {
+    width: 40%;
+    display: inline-block;
+    margin: auto;
+    text-align: justify;
+}
+
+#score-out {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+}
+
