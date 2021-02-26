@@ -90,7 +90,7 @@ function CheckIn() {
         dispatch({ type: 'ADD_CHECKIN', payload: newCheckIn })
 
         alert(`Check-in submitted successfully!`);
-        // history.push('/user')
+        history.push('/user')
     }
 
     return (

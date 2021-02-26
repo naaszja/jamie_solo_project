@@ -47,11 +47,10 @@ const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <p>Access Level: {access} </p>
-      <h4>Current Work Orders</h4>
+      {(user.accesslvl === 1) ? <><h4>Current Work Orders</h4>ALL_WORK_ORDERS_HERE (order by id)</> : <><h4>Current Work Orders</h4>THIS_CUSTOMERS_WORK_ORDERS_HERE (order by id)</> };
       <hr/>
       <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getEquipmentList}>View Equipment List</Button> : <Button onClick={getEquipmentList}>View Equipment List</Button>}</p>
       <p>{(user.accesslvl === 1) ? <><Button variant="warning" onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
-      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCheckin}>View Check-In Page</Button> : <></>}</p>
       <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Personal Information</Button> : <Button onClick={getCustomerList}>Personal Information</Button>}</p>
       <LogOutButton className="btn" />
     </div>
