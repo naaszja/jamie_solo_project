@@ -45,9 +45,9 @@ function CustomerList() {
                 <p>Email: {user.email}</p>
                 <Button variant="outline-success" size="sm" value={user.id} onClick={updateUser}>Update Information</Button>
                 <Button size="sm" variant="outline-danger" value={user.id} onClick={deleteUser}>Delete Customer</Button>
-                <hr />
-                <UserInput editMode={editMode}/>
             </div>
+            <hr />
+            <UserInput editMode={editMode} />
         </div>
     );
 }

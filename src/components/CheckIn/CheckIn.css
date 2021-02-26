@@ -1,0 +1,21 @@
+#checkIn-div {
+    text-align: center;
+    /* background-color: lightgray; */
+}
+
+#checkIn-div h1 {
+    text-decoration: underline;
+    color: dodgerblue;
+}
+
+.radio-good {
+    color: forestgreen;
+}
+
+.radio-maintenance {
+    color: rgb(255, 183, 0);
+}
+
+.radio-replace {
+    color: crimson;
+}

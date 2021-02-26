@@ -34,6 +34,11 @@ function UserPage() {
     history.push('/customerList');
   }
 
+    // Function to navigate to the customer information page
+    const getCheckin = () => {
+      history.push('/checkIn');
+    }
+
   // Set the access setting based on the accesslvl in the DB
 const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
 
@@ -46,7 +51,8 @@ const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
       <hr/>
       <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getEquipmentList}>View Equipment List</Button> : <Button onClick={getEquipmentList}>View Equipment List</Button>}</p>
       <p>{(user.accesslvl === 1) ? <><Button variant="warning" onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
-      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Update Personal Information</Button> : <Button onClick={getCustomerList}>View Equipment List</Button>}</p>
+      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCheckin}>View Check-In Page</Button> : <></>}</p>
+      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Personal Information</Button> : <Button onClick={getCustomerList}>Personal Information</Button>}</p>
       <LogOutButton className="btn" />
     </div>
   );
