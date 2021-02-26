@@ -44,9 +44,9 @@ const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
       <p>Access Level: {access} </p>
       <h4>Current Work Orders</h4>
       <hr/>
-      <p><Button onClick={getEquipmentList}>View Equipment List</Button></p>
-      <p>{(user.accesslvl === 1) ? <><Button onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
-      <p><Button onClick={getCustomerList}>Update Personal Information</Button></p>
+      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getEquipmentList}>View Equipment List</Button> : <Button onClick={getEquipmentList}>View Equipment List</Button>}</p>
+      <p>{(user.accesslvl === 1) ? <><Button variant="warning" onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
+      <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Update Personal Information</Button> : <Button onClick={getCustomerList}>View Equipment List</Button>}</p>
       <LogOutButton className="btn" />
     </div>
   );
