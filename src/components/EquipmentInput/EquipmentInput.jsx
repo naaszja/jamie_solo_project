@@ -41,7 +41,7 @@ function EquipmentInput() {
         setModel('');
         setYear('');
 
-        history.push('/checkIn');
+        history.push('/equipmentList');
     }
 
 
