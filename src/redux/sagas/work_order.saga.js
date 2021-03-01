@@ -21,10 +21,19 @@ function* addCheckIn(action) {
     }
 }
 
+function* addWorkOrder(action) {
+try {
+    yield axios.post('/api/workOrders', action.payload);
+} catch (error) {
+    console.log('Error adding work order', error);
+}
+}
+
 function* workOrderSaga() {
     yield takeEvery('FETCH_WORKORDERS', fetchWorkOrders);
     yield takeEvery('FETCH_SINGLE_WORKORDER', fetchSingleWorkOrder);
     yield takeEvery('ADD_CHECKIN', addCheckIn)
+    yield takeEvery('ADD_WORKORDER', addWorkOrder)
 }
 
 export default workOrderSaga;

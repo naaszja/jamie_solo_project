@@ -40,8 +40,6 @@ function EquipmentInput() {
         setMake('');
         setModel('');
         setYear('');
-
-        history.push('/equipmentList');
     }
 
 

@@ -29,11 +29,23 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
-    // POST route code here
+// POST route
+router.post('/', rejectUnauthenticated, (req, res) => {
+    const newWorkOrder = req.body;
+    console.log('New work order is:', newWorkOrder);
+    debugger;
+  
+    const queryText = `INSERT INTO "work_orders" ("services", "total_price", "user_id", "bike_id")
+    VALUES ($1, $2, $3, $4);`;
+    console.log(queryText);
+
+    pool.query(queryText, [newWorkOrder.services, newWorkOrder.total_price, newWorkOrder.user_id, newWorkOrder.bike_id])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('Error adding new Equipment', error);
+            res.sendStatus(500);
+        })
 });
 
 module.exports = router;

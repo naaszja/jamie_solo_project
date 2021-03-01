@@ -51,7 +51,7 @@ function CheckIn() {
     if (sum >= 35) {
         estimate = 40;
     } else if (sum < 35 && sum >= 30) {
-        estimate = 75;
+        estimate = 80;
     } else if (sum < 30 && sum >= 25) {
         estimate = 125;
     } else if (sum < 25 && sum >= 20) {
@@ -88,6 +88,42 @@ function CheckIn() {
         }
 
         dispatch({ type: 'ADD_CHECKIN', payload: newCheckIn })
+
+        const recommendation = {
+            basic: 'Basic tune-up',
+            comp: 'Comprehensive tune-up',
+            overhaul: 'Complete overhaul',
+        }
+
+        let newWorkOrder = {};
+
+        if (estimate <= 80) {
+            newWorkOrder = {
+                services: recommendation.basic,
+                total_price: newCheckIn.estimate,
+                user_id: user.id,
+                bike_id: newCheckIn.bikeId,
+            }
+        } else if (estimate > 80 && estimate <= 125) {
+            newWorkOrder = {
+                services: recommendation.comp,
+                total_price: newCheckIn.estimate,
+                user_id: user.id,
+                bike_id: newCheckIn.bikeId,
+            }
+        } else {
+            newWorkOrder = {
+                services: recommendation.overhaul,
+                total_price: newCheckIn.estimate,
+                user_id: user.id,
+                bike_id: newCheckIn.bikeId,
+            }
+        }
+
+        console.log(`New work order:`, newWorkOrder);
+        debugger;
+
+        dispatch({ type: 'ADD_WORKORDER', payload: newWorkOrder })
 
         alert(`Check-in submitted successfully!`);
         history.push('/user')
