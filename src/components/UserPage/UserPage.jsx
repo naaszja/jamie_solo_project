@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './UserPage.css';
 
 //Bring in bootstrap components and css
 // import Card from 'react-bootstrap/Card';
@@ -31,11 +32,6 @@ function UserPage() {
   // Bring in useHistory for navigation
   const history = useHistory();
 
-  // Function to navigate to the work orders page
-  const getWorkOrders = () => {
-    history.push('/workOrders');
-  }
-
   // Function to navigate to the equipment page
   const getEquipmentList = () => {
     history.push('/equipmentList');
@@ -56,9 +52,9 @@ function UserPage() {
       <p>Access Level: {access} </p>
       <h4>Current Work Orders</h4>
       <hr />
-      <div className='workOrder-list'>
+      <div className='user-workOrder-list'>
         {jobs.map(job =>
-          <div className="workOrder-div" key={job.id}>
+          <div className="user-workOrder-div" key={job.id}>
             Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | <Button value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
             <hr />
           </div>
