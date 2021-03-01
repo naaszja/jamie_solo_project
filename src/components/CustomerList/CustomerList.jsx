@@ -25,7 +25,7 @@ function CustomerList() {
 
     const updateUser = () => {
         console.log('in updateUser()');
-        setEditMode(true);
+        setEditMode(!editMode);
     }
 
     const deleteUser = (e) => {
@@ -40,8 +40,8 @@ function CustomerList() {
                 <p>Name: {user.lastName}, {user.firstName}</p>
                 <p>Phone: {user.phone}</p>
                 <p>Email: {user.email}</p>
-                <Button variant="outline-success" size="sm" value={user.id} onClick={updateUser}>Update Information</Button>
-                <Button size="sm" variant="outline-danger" value={user.id} onClick={deleteUser}>Delete Customer</Button>
+                | <Button variant="success" size="sm" value={user.id} onClick={updateUser}>Update</Button> | 
+                | <Button size="sm" variant="danger" value={user.id} onClick={deleteUser}>Delete</Button> |
             </div>
             <hr />
             {(editMode ? <UserInput editMode={editMode} /> : <></>)}

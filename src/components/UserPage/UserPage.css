@@ -1,15 +1,7 @@
-/* .user-workOrder-list {
-    text-align: center;
-    margin: auto;
-    width: 60%;
-}
+.job-complete {
+    color: forestgreen;
 
-.user-workOrder-list h1 {
-    margin: 2em;
-    color: dodgerblue;
-    text-decoration: underline;
 }
-
-.user-workOrder-div {
-    margin: 3em;
-} */
+.job-not-complete {
+    color: crimson;
+}

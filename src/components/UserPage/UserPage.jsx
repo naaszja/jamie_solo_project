@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
@@ -55,7 +55,7 @@ function UserPage() {
       <div className='user-workOrder-list'>
         {jobs.map(job =>
           <div className="user-workOrder-div" key={job.id}>
-            Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | <Button value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
+            Job id: {job.id} | Services: {job.services} | Estimate: ${job.total_price} | Bike id: {job.bike_id} <br /><br /> Work Order Status: {(job.completed ? <div className='job-complete'>Complete</div> : <div className="job-not-complete">Not Complete</div>)} <br /> <Button value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
             <hr />
           </div>
         )}

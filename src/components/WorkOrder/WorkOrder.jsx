@@ -17,6 +17,12 @@ function WorkOrder() {
     const job = useSelector(store => store.singleWorkOrderReducer);
     console.log(`Job is :`, job);
 
+    const completeWorkOrder = () => {
+        console.log('in complete work order function');
+        alert('Work order completed successfully.')
+        history.push('/user')
+    }
+
     return (
         <div className='workOrder'>
             <div className="workOrder-div" key={job.id}>
@@ -29,7 +35,7 @@ function WorkOrder() {
                 <hr />
                 <p>Bike id: {job.bike_id}</p>
                 <hr />
-                <p><Button variant="outline-success" size="sm" >Complete Job</Button></p>
+                <p><Button variant="warning" size="sm" onClick={completeWorkOrder}>Complete Job</Button></p>
                 <hr />
             </div>
         </div>

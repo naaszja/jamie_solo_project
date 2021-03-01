@@ -32,7 +32,7 @@ function WorkOrderList() {
             <h1>Work Orders</h1>
             {jobs.map(job =>
                 <div className="workOrder-div" key={job.id}>
-                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | <Button  value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
+                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | Work Order Status: {} | <Button  value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
                     <hr />
                 </div>
             )}
