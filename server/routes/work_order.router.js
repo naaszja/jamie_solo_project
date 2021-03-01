@@ -7,13 +7,24 @@ const {
 
 // GET route
 router.get('/', rejectUnauthenticated, (req, res) => {
-    const queryText = `SELECT * FROM "work_orders" ORDER BY "id" ASC;`;
-    pool.query(queryText)
+
+    if (req.user.accesslvl === 1) {
+        const queryText = `SELECT * FROM "work_orders" ORDER BY "id" ASC;`;
+        pool.query(queryText)
         .then((result) => {
             res.send(result.rows);
-        }).catch ((error) => { 
+        }).catch((error) => {
             console.log('Error fetching work orders:', error);
         });
+    } else if (req.user.accesslvl === 0) {
+        const queryText = `SELECT * FROM "work_orders" WHERE "id" = $1 ORDER BY "id" ASC;`;
+        pool.query(queryText, [req.user.id])
+        .then((result) => {
+            res.send(result.rows);
+        }).catch((error) => {
+            console.log('Error fetching work orders:', error);
+        });
+    }
 });
 
 // GET route
@@ -24,7 +35,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         .then((result) => {
             console.log('returning job with id of:', jobId);
             res.send(result.rows);
-        }).catch ((error) => { 
+        }).catch((error) => {
             console.log('Error fetching work orders:', error);
         });
 });
@@ -33,8 +44,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newWorkOrder = req.body;
     console.log('New work order is:', newWorkOrder);
-    debugger;
-  
+
     const queryText = `INSERT INTO "work_orders" ("services", "total_price", "user_id", "bike_id")
     VALUES ($1, $2, $3, $4);`;
     console.log(queryText);

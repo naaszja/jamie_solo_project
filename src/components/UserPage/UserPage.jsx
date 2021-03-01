@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from "react-bootstrap/Button";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,6 +15,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+  const dispatch = useDispatch();
+
+  const jobs = useSelector(store => store.workOrderReducer);
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_WORKORDERS' })
+  }, []);
+
+  const fetchSingleWorkOrder = (event) => {
+    dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
+    history.push('/workOrder');
+  }
 
   // Bring in useHistory for navigation
   const history = useHistory();
@@ -34,23 +46,25 @@ function UserPage() {
     history.push('/customerList');
   }
 
-    // Function to navigate to the customer information page
-    const getCheckin = () => {
-      history.push('/checkIn');
-    }
-
   // Set the access setting based on the accesslvl in the DB
-const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
+  const access = ((user.accesslvl === 1) ? "Admin" : "Customer");
 
   return (
     <div className="container">
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <p>Access Level: {access} </p>
-      {(user.accesslvl === 1) ? <><h4>Current Work Orders</h4>ALL_WORK_ORDERS_HERE (order by id)</> : <><h4>Current Work Orders</h4>THIS_CUSTOMERS_WORK_ORDERS_HERE (order by id)</> }
-      <hr/>
+      <h4>Current Work Orders</h4>
+      <hr />
+      <div className='workOrder-list'>
+        {jobs.map(job =>
+          <div className="workOrder-div" key={job.id}>
+            Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id} | <Button value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
+            <hr />
+          </div>
+        )}
+      </div>
       <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getEquipmentList}>View Equipment List</Button> : <Button onClick={getEquipmentList}>View Equipment List</Button>}</p>
-      <p>{(user.accesslvl === 1) ? <><Button variant="warning" onClick={getWorkOrders}>View Work Orders</Button></> : <></>}</p>
       <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Personal Information</Button> : <Button onClick={getCustomerList}>Personal Information</Button>}</p>
       <LogOutButton className="btn" />
     </div>
