@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 //Bring in bootstrap components and css
@@ -14,6 +14,7 @@ import UserInput from '../UserInput/UserInput';
 function CustomerList() {
 
     const dispatch = useDispatch();
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CUSTOMERS' })
@@ -22,13 +23,9 @@ function CustomerList() {
     const user = useSelector(store => store.user);
     console.log('User:', user);
 
-    // Variable to hold status of edit mode
-    let editMode = false;
-
     const updateUser = () => {
-        debugger;
         console.log('in updateUser()');
-        editMode = true;
+        setEditMode(true);
     }
 
     const deleteUser = (e) => {
@@ -47,9 +44,10 @@ function CustomerList() {
                 <Button size="sm" variant="outline-danger" value={user.id} onClick={deleteUser}>Delete Customer</Button>
             </div>
             <hr />
-            <UserInput editMode={editMode} />
+            {(editMode ? <UserInput editMode={editMode} /> : <></>)}
         </div>
     );
+
 }
 
 // this allows us to use <App /> in index.js
