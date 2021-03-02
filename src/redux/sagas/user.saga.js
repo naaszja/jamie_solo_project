@@ -32,29 +32,28 @@ function* fetchCustomers(action) {
 
 function* addCustomer(action) {
   try {
-      console.log(`action.payload is:`, action.payload);
-      yield axios.post(`api/customerList`, action.payload);
-      yield put({ type: 'FETCH_CUSTOMERS' });
+    console.log(`action.payload is:`, action.payload);
+    yield axios.post(`api/customerList`, action.payload);
+    yield put({ type: 'FETCH_CUSTOMERS' });
   } catch (error) {
-      console.log('Error adding customer', error);
+    console.log('Error adding customer', error);
   }
 }
 
 function* deleteCustomer(action) {
   try {
-      yield axios.delete(`api/customerList/${action.payload}`);
-      yield put({ type: 'FETCH_CUSTOMERS' });
+    yield axios.delete(`api/customerList/${action.payload}`);
   } catch (error) {
-      console.log('Error deleting customer!', error);
+    console.log('Error deleting customer!', error);
   }
 }
 
 function* currentCustomer(action) {
   try {
-      yield axios.get(`api/customerList/${action.payload}`);
-      yield put({type: 'SET_CURRENT', payload: response.data })
+    yield axios.get(`api/customerList/${action.payload}`);
+    yield put({ type: 'SET_CURRENT', payload: response.data })
   } catch (error) {
-      console.log('Error setting current customer!', error);
+    console.log('Error setting current customer!', error);
   }
 }
 function* userSaga() {
