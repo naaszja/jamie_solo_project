@@ -80,9 +80,40 @@ function UserInput() {
                         <Card bg="dark" text="white">
                             <Card.Body>
                                 <Card.Text>
-                                    <p>Name: {user.lastName}, {user.firstName}</p>
-                                    <p>Phone: {user.phone}</p>
-                                    <p>Email: {user.email}</p>
+                                    <table id='update-table'>
+                                        <tr>
+                                            <td>
+                                                <label htmlFor='setFirstName'>First name:</label> 
+                                            </td>
+                                            <td>
+                                                <input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label htmlFor='setLastName'>Last name:</label>
+                                            </td>
+                                            <td>
+                                                <input value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label htmlFor='setPhone'>Phone:</label>
+                                            </td>
+                                            <td>
+                                                <input value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label htmlFor='setEmail'>Email:</label>
+                                            </td>
+                                            <td>
+                                                <input value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                                            </td>
+                                        </tr>
+                                    </table>
                                 </Card.Text>
                                 <Button variant="primary" size="block" onClick={addUser}>Save</Button>
                             </Card.Body>
