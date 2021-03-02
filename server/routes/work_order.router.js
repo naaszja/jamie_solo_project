@@ -9,7 +9,7 @@ const {
 router.get('/', rejectUnauthenticated, (req, res) => {
 
     if (req.user.accesslvl === 1) {
-        const queryText = `SELECT * FROM "work_orders" ORDER BY "id" ASC;`;
+        const queryText = `SELECT * FROM "work_orders" ORDER BY "completed" ASC;`;
         pool.query(queryText)
             .then((result) => {
                 res.send(result.rows);
@@ -17,7 +17,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                 console.log('Error fetching work orders:', error);
             });
     } else {
-        const queryText = `SELECT * FROM "work_orders" WHERE "user_id" = $1 ORDER BY "id" ASC;`;
+        const queryText = `SELECT * FROM "work_orders" WHERE "user_id" = $1 ORDER BY "completed" ASC;`;
         pool.query(queryText, [req.user.id])
             .then((result) => {
                 res.send(result.rows);
@@ -95,19 +95,5 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         res.sendStatus(500);
     })
 })
-
-// // Delete rout
-// router.delete('/:id', rejectUnauthenticated, (req, res) => {
-//     const idToDelete = req.params.id;
-//     const queryText = `DELETE FROM "equipment" WHERE "id" = $1;`;
-//     pool.query(queryText, [idToDelete])
-//         .then((result) => {
-//             console.log('Equipment deleted successfully!');
-//             res.sendStatus(204);
-//         }).catch((error) => {
-//             console.log('Error deleting equipment', error);
-//             res.sendStatus(500);
-//         })
-// });
 
 module.exports = router;

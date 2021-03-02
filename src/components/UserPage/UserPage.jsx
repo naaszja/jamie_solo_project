@@ -19,8 +19,9 @@ function UserPage() {
 
   const jobs = useSelector(store => store.workOrderReducer);
 
+
   useEffect(() => {
-    dispatch({ type: 'FETCH_WORKORDERS' })
+      dispatch({ type: 'FETCH_WORKORDERS' })
   }, []);
 
   const fetchSingleWorkOrder = (event) => {
@@ -30,8 +31,7 @@ function UserPage() {
 
   const deleteWorkOrder = (event) => {
     console.log('Job id:', event.target.value);
-    dispatch({ type: 'DELETE_WORKORDER', payload: event.target.value })
-    dispatch({ type: 'FETCH_WORKORDERS' })
+    dispatch({ type: 'DELETE_WORKORDER', payload: event.target.value });
   }
 
   // Bring in useHistory for navigation

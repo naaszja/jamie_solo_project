@@ -51,7 +51,7 @@ function EquipmentInput() {
             <h4>To enter a new bike, please use the form below.</h4>
             <br />
             <Row>
-                <Col xs={12} md={8} lg={4}>
+                <Col xs={12} md={6} lg={4}>
                     <Card bg="dark" text="white">
                         <Card.Body>
                             <Card.Text>

@@ -52,8 +52,7 @@ function CustomerList() {
                             </Card>
                         </Col>
                     </Row>
-                    <hr />
-                    {(editMode ? <UserInput/> : <></>)}
+                    {(editMode ? <><hr /><UserInput/></> : <></>)}
                 </Container>
             </div>
         </div>

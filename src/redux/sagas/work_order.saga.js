@@ -22,16 +22,18 @@ function* addCheckIn(action) {
 }
 
 function* addWorkOrder(action) {
-try {
-    yield axios.post('/api/workOrders', action.payload);
-} catch (error) {
-    console.log('Error adding work order', error);
-}
+    try {
+        yield axios.post('/api/workOrders', action.payload);
+        yield put({type: 'FETCH_WORKORDERS'})
+    } catch (error) {
+        console.log('Error adding work order', error);
+    }
 }
 
 function* completeWorkOrder(action) {
     try {
         yield axios.put('/api/workOrders', action.payload);
+        yield put({type: 'FETCH_WORKORDERS'})
     } catch (error) {
         console.log('Error completing work order', error);
     }
@@ -40,6 +42,7 @@ function* completeWorkOrder(action) {
 function* deleteWorkOrder(action) {
     try {
         yield axios.delete(`/api/workOrders/${action.payload}`);
+        yield put({type: 'FETCH_WORKORDERS'})
     } catch (error) {
         console.log('Error deleting work order', error);
     }
