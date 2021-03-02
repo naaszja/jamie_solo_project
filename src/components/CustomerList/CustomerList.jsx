@@ -24,7 +24,6 @@ function CustomerList() {
     console.log('User:', user);
 
     const updateUser = () => {
-        console.log('in updateUser()');
         setEditMode(!editMode);
     }
 
@@ -54,7 +53,7 @@ function CustomerList() {
                         </Col>
                     </Row>
                     <hr />
-                    {(editMode ? <UserInput editMode={editMode} /> : <></>)}
+                    {(editMode ? <UserInput/> : <></>)}
                 </Container>
             </div>
         </div>

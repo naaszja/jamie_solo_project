@@ -47,7 +47,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// Delete rout
+// Delete route
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const idToDelete = req.params.id;
     const queryText = `DELETE FROM "equipment" WHERE "id" = $1;`;

@@ -28,6 +28,12 @@ function UserPage() {
     history.push('/workOrder');
   }
 
+  const deleteWorkOrder = (event) => {
+    console.log('Job id:', event.target.value);
+    dispatch({ type: 'DELETE_WORKORDER', payload: event.target.value })
+    dispatch({ type: 'FETCH_WORKORDERS' })
+  }
+
   // Bring in useHistory for navigation
   const history = useHistory();
 
@@ -56,18 +62,18 @@ function UserPage() {
           {jobs.map(job =>
             <Col lg="4" md="6" sm="12" key={job.id}>
               <div className="user-workOrder-div" key={job.id}>
-                <Card bg="dark" border="primary" text="white" key={job.id}>
+                <Card className="workOrder-card" bg="dark" border="primary" text="white" key={job.id}>
                   <Card.Header>Job id: {job.id}</Card.Header>
                   <Card.Body>
                     <Card.Title>Work Order Status: {(job.completed ? <div className='job-complete'>Complete</div> : <div className="job-not-complete">Not Complete</div>)}</Card.Title>
-                    <Card.Text>
-                      <ul id='shallow-ul'>
-                        <li>Services:<ul><li>{job.services}</li></ul></li>
-                        <li>Estimate: ${job.total_price}</li>
-                        <li>Bike id: {job.bike_id}</li>
-                      </ul>
+                    <Card.Text className="workOrder-card-text">
+                      <p>Services: {job.services}</p>
+                      <p>Estimate: ${job.total_price}</p>
+                      <p>Bike id: {job.bike_id}</p>
                     </Card.Text>
-                    <Button value={job.id} variant="warning" size="lg" onClick={fetchSingleWorkOrder}>Select Job</Button>              </Card.Body>
+                    {(user.accesslvl === 1) ? <Button value={job.id} variant="warning" size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <></>}
+                    <Button variant="danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
+                  </Card.Body>
                 </Card>
               </div>
             </Col>
