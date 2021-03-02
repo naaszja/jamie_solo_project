@@ -38,7 +38,7 @@ function CustomerList() {
                 <Container>
                     <Row>
                         <Col xs={12} md={8} lg={6}>
-                            <Card>
+                            <Card bg="dark" text="white">
                                 <Card.Header><h4>User Information</h4></Card.Header>
                                 <Card.Body>
                                     <Card.Title>User ID: {user.id}</Card.Title>
@@ -47,7 +47,7 @@ function CustomerList() {
                                         <p>Phone: {user.phone}</p>
                                         <p>Email: {user.email}</p>
                                     </Card.Text>
-                                    <Button variant="outline-success" size="block" onClick={updateUser} value={user.id}>Update</Button>
+                                    <Button variant="success" size="block" onClick={updateUser} value={user.id}>Update</Button>
                                     <Button variant="danger" size="block" onClick={deleteUser} value={user.id}>Delete</Button>
                                 </Card.Body>
                             </Card>

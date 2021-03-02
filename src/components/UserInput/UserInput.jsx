@@ -2,6 +2,11 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './UserInput.css';
 
@@ -69,14 +74,54 @@ function UserInput() {
 
     if (edit === true) {
         return (
-            <div id='update-input'>
-                <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} /></p>
-                <p><label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
-                <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} /></p>
-                <p><label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
-                <Button variant="primary" size="sm" onClick={addUser}>Save</Button>
-            </div>
-        );
+            <>
+                <Row>
+                    <Col xs={12} md={8} lg={6}>
+                        <Card bg="dark" text="white">
+                            <Card.Body>
+                                <Card.Text>
+                                    <p>Name: {user.lastName}, {user.firstName}</p>
+                                    <p>Phone: {user.phone}</p>
+                                    <p>Email: {user.email}</p>
+                                </Card.Text>
+                                <Button variant="primary" size="block" onClick={addUser}>Save</Button>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                {/* <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text>First and last name</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl value={firstName} onChange={(e) => { setFirstName(e.target.value) }} />
+                    <FormControl value={lastName} onChange={(e) => { setLastName(e.target.value) }} />
+                </InputGroup>
+
+                <InputGroup className="mb-3">
+                    <InputGroup.Prepend>
+                        <InputGroup.Text>Phone</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+                    <InputGroup.Prepend>
+                        <InputGroup.Text>E-mail</InputGroup.Text>
+                    </InputGroup.Prepend>
+                    <FormControl value={email} onChange={(e) => { setEmail(e.target.value) }} />
+                </InputGroup> */}
+
+                {/* <InputGroup.Prepend>
+                    <InputGroup.Text>Phone</InputGroup.Text>
+                </InputGroup.Prepend>
+                <FormControl value={phone} onChange={(e) => { setPhone(e.target.value) }} />
+
+                <div id='update-input'>
+                    <p><label htmlFor='setFirstName'>First name:</label><input value={firstName} onChange={(e) => { setFirstName(e.target.value) }} /></p>
+                    <p><label htmlFor='setLastName'>Last name:</label><input value={lastName} onChange={(e) => { setLastName(e.target.value) }} /></p>
+                    <p><label htmlFor='setPhone'>Phone:</label><input value={phone} onChange={(e) => { setPhone(e.target.value) }} /></p>
+                    <p><label htmlFor='setEmail'>Email:</label><input value={email} onChange={(e) => { setEmail(e.target.value) }} /></p>
+                    <Button variant="primary" size="sm" onClick={addUser}>Save</Button>
+                </div>  */}
+
+            </>);
     } else {
         return (
             <><h2>EDIT_MODE_FALSE</h2></>

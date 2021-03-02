@@ -3,3 +3,8 @@
     margin: auto;
     text-align: center;
 }
+
+.row {
+    justify-content: center;
+    margin: auto;
+}
