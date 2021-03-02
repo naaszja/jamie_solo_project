@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 //Bring in bootstrap components and css
-// import Card from 'react-bootstrap/Card';
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './CustomerList.css';
@@ -14,6 +14,7 @@ import UserInput from '../UserInput/UserInput';
 function CustomerList() {
 
     const dispatch = useDispatch();
+    const [editMode, setEditMode] = useState(false);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_CUSTOMERS' })
@@ -22,13 +23,9 @@ function CustomerList() {
     const user = useSelector(store => store.user);
     console.log('User:', user);
 
-    // Variable to hold status of edit mode
-    let editMode = false;
-
     const updateUser = () => {
-        debugger;
         console.log('in updateUser()');
-        editMode = true;
+        setEditMode(!editMode);
     }
 
     const deleteUser = (e) => {
@@ -36,20 +33,33 @@ function CustomerList() {
     }
 
     return (
-        <div className='user-list'>
-            <div className="user-div" key={user.id}>
-                <h3>Customer Information</h3>
-                <p>Customer ID: {user.id}</p>
-                <p>Name: {user.lastName}, {user.firstName}</p>
-                <p>Phone: {user.phone}</p>
-                <p>Email: {user.email}</p>
-                <Button variant="outline-success" size="sm" value={user.id} onClick={updateUser}>Update Information</Button>
-                <Button size="sm" variant="outline-danger" value={user.id} onClick={deleteUser}>Delete Customer</Button>
+        <div id="info-container">
+            <div className="info-div">
+                <Container>
+                    <Row>
+                        <Col xs={12} md={8} lg={6}>
+                            <Card>
+                                <Card.Header><h4>User Information</h4></Card.Header>
+                                <Card.Body>
+                                    <Card.Title>User ID: {user.id}</Card.Title>
+                                    <Card.Text>
+                                        <p>Name: {user.lastName}, {user.firstName}</p>
+                                        <p>Phone: {user.phone}</p>
+                                        <p>Email: {user.email}</p>
+                                    </Card.Text>
+                                    <Button variant="outline-success" size="block" onClick={updateUser} value={user.id}>Update</Button>
+                                    <Button variant="danger" size="block" onClick={deleteUser} value={user.id}>Delete</Button>
+                                </Card.Body>
+                            </Card>
+                        </Col>
+                    </Row>
+                    <hr />
+                    {(editMode ? <UserInput editMode={editMode} /> : <></>)}
+                </Container>
             </div>
-            <hr />
-            <UserInput editMode={editMode} />
         </div>
     );
+
 }
 
 // this allows us to use <App /> in index.js

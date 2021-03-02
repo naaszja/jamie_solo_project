@@ -13,3 +13,19 @@
 .bike-div {
     margin: 3em;
 }
+
+.bike-p {
+    font-size: 1.25em;
+    text-align: left;
+    line-height: 0.5;
+}
+
+.cntrl-div {
+    margin-top: 2em;
+}
+
+.equipment-input {
+    text-align: center;
+    margin: 2em auto 0;
+    width: 60%;
+}

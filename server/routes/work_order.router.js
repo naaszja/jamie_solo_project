@@ -11,19 +11,19 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     if (req.user.accesslvl === 1) {
         const queryText = `SELECT * FROM "work_orders" ORDER BY "id" ASC;`;
         pool.query(queryText)
-        .then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            console.log('Error fetching work orders:', error);
-        });
+            .then((result) => {
+                res.send(result.rows);
+            }).catch((error) => {
+                console.log('Error fetching work orders:', error);
+            });
     } else if (req.user.accesslvl === 0) {
         const queryText = `SELECT * FROM "work_orders" WHERE "id" = $1 ORDER BY "id" ASC;`;
         pool.query(queryText, [req.user.id])
-        .then((result) => {
-            res.send(result.rows);
-        }).catch((error) => {
-            console.log('Error fetching work orders:', error);
-        });
+            .then((result) => {
+                res.send(result.rows);
+            }).catch((error) => {
+                console.log('Error fetching work orders:', error);
+            });
     }
 });
 
@@ -54,6 +54,29 @@ router.post('/', rejectUnauthenticated, (req, res) => {
             res.sendStatus(201);
         }).catch((error) => {
             console.log('Error adding new Equipment', error);
+            res.sendStatus(500);
+        })
+});
+
+// PUT route
+router.put('/', rejectUnauthenticated, (req, res) => {
+    const techId = req.body.tech_id;
+    const jobId = req.body.job_id;
+
+    console.log('Tech id is:', techId);
+    console.log('Job id is:', jobId);
+
+    const queryText = `UPDATE "work_orders" 
+    SET "completed" = $1,
+    "completed_on" = CURRENT_TIMESTAMP,
+    "completed_by" = $2
+    WHERE "id" = $3;`;
+
+    pool.query(queryText, [true, techId, jobId])
+        .then((result) => {
+            res.sendStatus(201);
+        }).catch((error) => {
+            console.log('Error completing work order', error);
             res.sendStatus(500);
         })
 });

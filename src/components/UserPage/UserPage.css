@@ -1,0 +1,17 @@
+.job-complete {
+    color: forestgreen;
+
+}
+.job-not-complete {
+    color: crimson;
+}
+
+#shallow-ul {
+    position: relative;
+    left: -40px;
+    list-style-type: none;
+}
+
+.user-workOrder-div {
+    display: inline;
+}

@@ -12,10 +12,26 @@ import Col from 'react-bootstrap/Col';
 
 function WorkOrder() {
 
+    const dispatch = useDispatch();
     const history = useHistory();
 
+    const user = useSelector(store => store.user);
     const job = useSelector(store => store.singleWorkOrderReducer);
     console.log(`Job is :`, job);
+
+    const completeWorkOrder = (e) => {
+        console.log('in complete work order function');
+        alert('Work order completed successfully.')
+
+        const details = {
+            tech_id: user.id,
+            job_id: e.target.value,
+        }
+        dispatch({ type: 'COMPLETE_WORKORDER', payload: details });
+        dispatch({ type: 'FETCH_WORKORDERS' });
+
+        history.push('/user')
+    }
 
     return (
         <div className='workOrder'>
@@ -29,7 +45,7 @@ function WorkOrder() {
                 <hr />
                 <p>Bike id: {job.bike_id}</p>
                 <hr />
-                <p><Button variant="outline-success" size="sm" >Complete Job</Button></p>
+                <p><Button variant="warning" size="sm" onClick={completeWorkOrder} value={job.id}>Complete Job</Button></p>
                 <hr />
             </div>
         </div>

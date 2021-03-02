@@ -24,7 +24,6 @@ function* addEquipment(action) {
 function* deleteEquipment(action) {
     try {
         console.log(`action.payload is:`, action.payload);
-        debugger;
         yield axios.delete(`api/equipmentList/${action.payload}`);
         yield put({ type: 'FETCH_EQUIPMENT' });
     } catch (error) {

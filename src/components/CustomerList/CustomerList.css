@@ -4,15 +4,14 @@
     width: 60%;
 }
 
-.user-list h1 {
-    margin: 2em;
-    color: dodgerblue;
-    text-decoration: underline;
-}
-
 .user-div {
     width: 40%;
     padding: 0;
     display: inline-block;
     margin: 5px;
 }
+
+.info-div {
+    justify-content: center;
+}
+
