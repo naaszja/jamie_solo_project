@@ -121,12 +121,13 @@ function CheckIn() {
         }
 
         console.log(`New work order:`, newWorkOrder);
-        debugger;
 
         dispatch({ type: 'ADD_WORKORDER', payload: newWorkOrder })
 
         alert(`Check-in submitted successfully!`);
+        window.location.reload;
         history.push('/user')
+
     }
 
     return (

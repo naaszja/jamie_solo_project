@@ -15,6 +15,7 @@ function WorkOrderList() {
 
     const dispatch = useDispatch();
     const history = useHistory();
+    const user = (store => store.user);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_WORKORDERS' })
@@ -32,7 +33,8 @@ function WorkOrderList() {
             <h1>Work Orders</h1>
             {jobs.map(job =>
                 <div className="workOrder-div" key={job.id}>
-                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id}<Button  value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button>
+                    Job id: {job.id} | Services: {job.services} | Estimate: {job.total_price} | Bike id: {job.bike_id}
+                    <p>{(user.accesslvl === 1) ? <Button  value={job.id} variant="outline-warning" size="sm" onClick={fetchSingleWorkOrder}>Select Job</Button> : <><Button>Delete</Button></>}</p>
                     <hr />
                 </div>
             )}

@@ -1,7 +1,7 @@
 .job-complete {
     color: forestgreen;
-
 }
+
 .job-not-complete {
     color: crimson;
 }
@@ -14,4 +14,12 @@
 
 .user-workOrder-div {
     display: inline;
+}
+
+.workOrder-card-text {
+    line-height: 0.75;
+}
+
+.workOrder-card {
+    margin: 0.25em;
 }

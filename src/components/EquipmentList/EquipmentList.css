@@ -1,7 +1,6 @@
 .equipment-list {
     text-align: center;
     margin: auto;
-    width: 60%;
 }
 
 .equipment-list h1 {
@@ -15,9 +14,8 @@
 }
 
 .bike-p {
-    font-size: 1.25em;
+    font-size: 1em;
     text-align: left;
-    line-height: 0.5;
 }
 
 .cntrl-div {
@@ -27,5 +25,8 @@
 .equipment-input {
     text-align: center;
     margin: 2em auto 0;
-    width: 60%;
+}
+
+.equipment-cards {
+    margin: 1em;
 }

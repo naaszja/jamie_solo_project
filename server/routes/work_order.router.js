@@ -16,8 +16,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
             }).catch((error) => {
                 console.log('Error fetching work orders:', error);
             });
-    } else if (req.user.accesslvl === 0) {
-        const queryText = `SELECT * FROM "work_orders" WHERE "id" = $1 ORDER BY "id" ASC;`;
+    } else {
+        const queryText = `SELECT * FROM "work_orders" WHERE "user_id" = $1 ORDER BY "id" ASC;`;
         pool.query(queryText, [req.user.id])
             .then((result) => {
                 res.send(result.rows);
