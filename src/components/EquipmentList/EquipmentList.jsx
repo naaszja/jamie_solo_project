@@ -34,16 +34,34 @@ function EquipmentList() {
     }
 
     return (
-        <div className='equipment-list'>
-            <h1>BIKES!</h1>
-            {bikes.map(bike =>
-                <div className="bike-div" key={bike.id}>
-                    Bike id: {bike.id} | Make: {bike.make} | Model: {bike.model} | Year: {bike.year} | <Button variant="primary" size="sm" onClick={checkIn} value={bike.id}>Check-In</Button> | <Button variant="danger" size="sm" onClick={deleteEquipment} value={bike.id}>Delete</Button>
-                    <hr />
-                </div>
-            )}
-            <EquipmentInput />
-        </div>
+        <>
+            <div className='equipment-list'>
+                <Row>
+                    {bikes.map(bike =>
+                        <Col lg="4" md="6" sm="12">
+                            <div className="user-workOrder-div" >
+                                <Card bg="dark" border="primary" text="white" key={bike.id}>
+                                    <Card.Header><h4>Bike id: {bike.id}</h4></Card.Header>
+                                    <Card.Body>
+                                        <Card.Text>
+                                            <p className="bike-p">Make: {bike.make}</p>
+                                            <p className="bike-p">Model: {bike.model}</p>
+                                            <p className="bike-p">Year: {bike.year}</p>
+                                        </Card.Text>
+                                        <div className="cntrl-div">
+                                            <Button variant="primary" size="block" onClick={checkIn} value={bike.id}>Check-In</Button>
+                                            <Button variant="danger" size="block" onClick={deleteEquipment} value={bike.id}>Delete</Button>
+                                        </div>
+                                    </Card.Body>
+                                </Card>
+                            </div>
+                        </Col>)}
+                </Row>
+            </div>
+            <div className='equipment-input'>
+                <EquipmentInput />
+            </div>
+        </>
     );
 }
 
