@@ -37,12 +37,21 @@ function* completeWorkOrder(action) {
     }
 }
 
+function* deleteWorkOrder(action) {
+    try {
+        yield axios.delete(`/api/workOrders/${action.payload}`);
+    } catch (error) {
+        console.log('Error deleting work order', error);
+    }
+}
+
 function* workOrderSaga() {
     yield takeEvery('FETCH_WORKORDERS', fetchWorkOrders);
     yield takeEvery('FETCH_SINGLE_WORKORDER', fetchSingleWorkOrder);
     yield takeEvery('ADD_CHECKIN', addCheckIn);
     yield takeEvery('ADD_WORKORDER', addWorkOrder);
     yield takeEvery('COMPLETE_WORKORDER', completeWorkOrder);
+    yield takeEvery('DELETE_WORKORDER', deleteWorkOrder);
 }
 
 export default workOrderSaga;

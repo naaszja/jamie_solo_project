@@ -29,6 +29,7 @@ function UserPage() {
   }
 
   const deleteWorkOrder = (event) => {
+    console.log('Job id:', event.target.value);
     dispatch({ type: 'DELETE_WORKORDER', payload: event.target.value })
     dispatch({ type: 'FETCH_WORKORDERS' })
   }
@@ -71,7 +72,7 @@ function UserPage() {
                       <p>Bike id: {job.bike_id}</p>
                     </Card.Text>
                     {(user.accesslvl === 1) ? <Button value={job.id} variant="warning" size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <></>}
-                    <Button variant="danger" size="block" onClick={deleteWorkOrder}>Delete</Button>
+                    <Button variant="danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
                   </Card.Body>
                 </Card>
               </div>
