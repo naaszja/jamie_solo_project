@@ -18,6 +18,8 @@ function QR() {
     console.log('User:', user);
     console.log('Params:', params);
     const id = params.id;
+    const addy = `https://nameless-tor-68673.herokuapp.com/#/workOrder/${id}`
+    console.log('addy:', addy)
 
     return (
         <div className='root'>
@@ -26,7 +28,7 @@ function QR() {
                 <QRCode
                     level="Q"
                     style={{ width: 256 }}
-                    value={`https://nameless-tor-68673.herokuapp.com/#/workOrder/${id}`
+                    value={addy
                         
                     //     JSON.stringify({
                     //     id: user.id,

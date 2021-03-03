@@ -27,7 +27,7 @@ function UserPage() {
 
   const fetchSingleWorkOrder = (event) => {
     dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
-    history.push('/workOrder');
+    history.push(`/workOrder/${event.target.value}`);
   }
 
   const deleteWorkOrder = (event) => {
@@ -51,6 +51,7 @@ function UserPage() {
   // Funtion to show the QR code containing user, bike, and workorder information
 const showQR = (event) => {
   console.log('Job id:', event.target.value)
+  dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
   history.push(`/qr/${event.target.value}`);
 } 
 

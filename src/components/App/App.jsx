@@ -124,7 +124,7 @@ function App() {
             // - if logged in, redirects to "/user"
             // - else shows LandingPage at "/home"
             exact
-            path="/workOrder"
+            path="/workOrder/:id"
           >
             <WorkOrder />
           </ProtectedRoute>
