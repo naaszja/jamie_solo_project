@@ -39,7 +39,7 @@ function EquipmentList() {
             <div className='equipment-list'>
                 <Row>
                     {bikes.map(bike =>
-                        <Col lg="4" md="6" sm="12" key={bike.id}>
+                        <Col lg="4" sm="8" xs="12" key={bike.id}>
                             <div className="user-workOrder-div" >
                                 <Card className="equipment-cards" bg="dark" border="primary" text="white" key={bike.id}>
                                     <Card.Header><h4>Bike id: {bike.id}</h4></Card.Header>

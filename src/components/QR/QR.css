@@ -1,11 +1,9 @@
-root {
+.root {
     font-family: sans-serif;
+    text-align: center;
+    justify-content: center;
 }
 
-h1 {
-    text-align: center;
-}
-
-qrcode {
-    text-align: center;
+#qr-btn {
+    margin: 1em;
 }

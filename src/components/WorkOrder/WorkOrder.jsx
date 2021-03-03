@@ -38,20 +38,26 @@ function WorkOrder() {
         history.push('/user')
     }
 
+    let status = '';
+
+    if (job.status) {
+        status = 'Complete'
+    } else if (!job.status) {
+        status = 'Not Complete'
+
+    }
+    
     return (
         <div className='workOrder'>
             <div className="workOrder-div" key={job.id}>
+                <h3>Status: {status}</h3>
                 <p> Job id: {job.id}</p>
-                <hr />
                 <p>Services:</p>
                 <p>{job.services}</p>
-                <hr />
                 <p>Estimate: ${job.total_price}</p>
-                <hr />
                 <p>Bike id: {job.bike_id}</p>
                 <hr />
                 <p><Button variant="warning" size="sm" onClick={completeWorkOrder} value={job.id}>Complete Job</Button></p>
-                <hr />
             </div>
         </div>
     );
