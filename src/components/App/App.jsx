@@ -24,6 +24,7 @@ import WorkOrder from '../WorkOrder/WorkOrder';
 import EquipmentList from '../EquipmentList/EquipmentList';
 import CustomerList from '../CustomerList/CustomerList';
 import CheckIn from '../CheckIn/CheckIn';
+import QR from '../QR/QR';
 
 import './App.css';
 
@@ -155,6 +156,15 @@ function App() {
             path="/checkIn/:id"
           >
             <CheckIn />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // with authRedirect:
+            // - if logged in, redirects to "/user"
+            // - else shows LandingPage at "/home"
+            path="/qr/:id"
+          >
+            <QR />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
