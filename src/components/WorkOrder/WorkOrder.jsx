@@ -1,5 +1,5 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,12 +12,15 @@ import Col from 'react-bootstrap/Col';
 
 function WorkOrder() {
 
+    const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
 
     const user = useSelector(store => store.user);
     const job = useSelector(store => store.singleWorkOrderReducer);
     console.log(`Job is :`, job);
+
+    dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: params.id });
 
     const completeWorkOrder = (e) => {
         console.log('in complete work order function');
