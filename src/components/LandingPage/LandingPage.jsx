@@ -46,7 +46,7 @@ function LandingPage() {
               CONCLUSION
           </p>
           </div>
-          <div className="grid-col order-md-2 col-xs-12 col-md-6">
+          <div className="grid-col order-md-2 col-xs-12 col-md-4">
             <RegisterForm />
 
             <center>
