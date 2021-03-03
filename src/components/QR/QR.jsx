@@ -16,7 +16,7 @@ function QR() {
     // Bring in the store to access user, equipment, and work order information
     const user = useSelector(store => store.user);
     const id = params.id;
-    
+
     const workOrderURL = `https://nameless-tor-68673.herokuapp.com/#/workOrder/${id}`
 
     return (
