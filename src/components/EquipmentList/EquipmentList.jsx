@@ -25,6 +25,7 @@ function EquipmentList() {
     }, []);
 
     const checkIn = (event) => {
+        console.log('Job id:', event.target.value);
         history.push(`/checkin/${event.target.value}`);
     }
 

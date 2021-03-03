@@ -19,7 +19,7 @@ function CheckIn() {
 
     const user = useSelector(store => store.user);
     console.log('User:', user);
-
+    console.log('Params:', params);
 
     // Declare state to hold the 'rating' of each componnet in the check-in form
     const [frontTire, setFrontTire] = useState(0);
