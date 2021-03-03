@@ -28,8 +28,7 @@ function QR() {
                 <QRCode
                     level="Q"
                     style={{ width: 256 }}
-                    value={addy
-                        
+                    value={`${addy}`                        
                     //     JSON.stringify({
                     //     id: user.id,
                     //     lastName: user.lastName,
