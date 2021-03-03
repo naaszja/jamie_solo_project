@@ -26,7 +26,7 @@ function QR() {
                 <QRCode
                     level="Q"
                     style={{ width: 256 }}
-                    value={`https://nameless-tor-68673.herokuapp.com/#/qr/${id}`
+                    value={`https://nameless-tor-68673.herokuapp.com/#/workOrder/${id}`
                         
                     //     JSON.stringify({
                     //     id: user.id,
