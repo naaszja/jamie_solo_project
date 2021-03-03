@@ -19,7 +19,8 @@ const rootReducer = combineReducers({
   workOrderReducer, //contains all work orders and accompanying details.
   singleWorkOrderReducer, //contains all work orders and accompanying details.
   equipmentReducer, //contains all equipment records
-  customerReducer, //constains details about customers 
+  customerReducer, //constains details about customers
+  qrReducer, //reducer to hold all information needed to generte qr code 
 });
 
 export default rootReducer;

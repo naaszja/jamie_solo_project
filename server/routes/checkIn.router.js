@@ -22,18 +22,4 @@ router.post('/:id', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// // Delete rout
-// router.delete('/:id', rejectUnauthenticated, (req, res) => {
-//     const idToDelete = req.params.id;
-//     const queryText = `DELETE FROM "equipment" WHERE "id" = $1;`;
-//     pool.query(queryText, [idToDelete])
-//         .then((result) => {
-//             console.log('Equipment deleted successfully!');
-//             res.sendStatus(204);
-//         }).catch((error) => {
-//             console.log('Error deleting equipment', error);
-//             res.sendStatus(500);
-//         })
-// });
-
 module.exports = router;
