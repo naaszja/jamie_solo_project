@@ -26,7 +26,7 @@ function UserPage() {
   }, []);
 
   const fetchSingleWorkOrder = (event) => {
-    dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
+    // dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
     history.push(`/workOrder/${event.target.value}`);
   }
 

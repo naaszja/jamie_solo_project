@@ -20,7 +20,9 @@ function WorkOrder() {
     const job = useSelector(store => store.singleWorkOrderReducer);
     console.log(`Job is :`, job);
 
-    dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: params.id });
+    useEffect(() => {
+        dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: params.id });
+    }, []);    
 
     const completeWorkOrder = (e) => {
         console.log('in complete work order function');
