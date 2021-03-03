@@ -46,11 +46,11 @@ function WorkOrder() {
         status = 'Not Complete'
 
     }
-    
+
     return (
         <div className='workOrder'>
             <div className="workOrder-div" key={job.id}>
-                <h3>Status: {status}</h3>
+                <h4>Status: {status}</h4>
                 <p> Job id: {job.id}</p>
                 <p>Services:</p>
                 <p>{job.services}</p>
