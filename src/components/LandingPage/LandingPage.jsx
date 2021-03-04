@@ -29,26 +29,13 @@ function LandingPage() {
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
-
       <div className="grid">
         <div className="row">
-          <div className="grid-col order-md-1 col-md-8">
-            <p>
-              INTRO
-          </p>
-
-            <p>
-              MEAT
-          </p>
-
-            <p>
-              CONCLUSION
-          </p>
-          </div>
-          <div className="grid-col order-md-2 col-xs-12 col-md-4">
+        {/* <div className="grid-col order-md-1 col-md-8"> */}
+          <div className="grid-col col-xs-10">
+          <h1 id="welcome-h1">Welcome!</h1>
+          <img id="landing-img" src="https://cdn2.apstatic.com/photos/mtb/93874_smallMed_1554167190.jpg"></img>
             <RegisterForm />
-
             <center>
               <h4>Already a Member?</h4>
               <Button onClick={onLogin}>

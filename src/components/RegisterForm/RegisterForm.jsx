@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import './RegisterForm.css';
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -22,7 +23,7 @@ function RegisterForm() {
   }; // end registerUser
 
   return (
-    <form className="formPanel" onSubmit={registerUser}>
+    <form id='reg-box' className="formPanel" onSubmit={registerUser}>
       <h2>Register User</h2>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
@@ -54,7 +55,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <Button variant="primary" name="submit" value="Register" onClick={registerUser}>Register</Button>
+        <Button variant="info" name="submit" value="Register" onClick={registerUser}>Register</Button>
       </div>
     </form>
   );

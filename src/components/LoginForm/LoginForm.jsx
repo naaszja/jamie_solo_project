@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import './LoginForm.css';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -28,7 +29,7 @@ function LoginForm() {
   }; // end login
 
   return (
-    <form className="formPanel" onSubmit={login}>
+    <form id="log-box" className="formPanel" onSubmit={login}>
       <h2>Login</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
@@ -60,7 +61,7 @@ function LoginForm() {
         </label>
       </div>
       <div>
-        <Button variant="primary" type="submit" name="submit" value="Log In" onClick={() => history.push('/user')}>Login</Button>
+        <Button variant="info" type="submit" name="submit" value="Log In" onClick={() => history.push('/user')}>Login</Button>
       </div>
     </form>
   );

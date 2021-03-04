@@ -3,6 +3,7 @@ import LoginForm from '../LoginForm/LoginForm';
 import { useHistory } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
+import './LoginPage.css';
 
 
 function LoginPage() {
@@ -13,7 +14,7 @@ function LoginPage() {
       <LoginForm />
 
       <center>
-        <Button variant="primary"
+        <Button id="reg-btn" variant="light"
           onClick={() => {
             history.push('/registration');
           }}
