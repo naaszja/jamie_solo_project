@@ -11,12 +11,11 @@ function LoginPage() {
 
   return (
     <div className="login-div">
-      <img id="landing-img" src="https://cdn2.apstatic.com/photos/mtb/93874_smallMed_1554167190.jpg"></img>
       <LoginForm />
       <center>
         <Button id="reg-btn" variant="light"
           onClick={() => {
-            history.push('/registration');
+            history.push('/registration')
           }}
         >
           Register

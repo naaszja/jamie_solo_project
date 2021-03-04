@@ -30,6 +30,7 @@ function LoginForm() {
 
   return (
     <form id="log-box" className="formPanel" onSubmit={login}>
+      <img id="landing-img" src="https://media.giphy.com/media/xUPGcrr9fl9FVbFBi8/giphy.gif"></img>
       <h2>Login</h2>
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
