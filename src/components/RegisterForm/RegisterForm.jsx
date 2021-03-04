@@ -54,7 +54,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <Button variant="primary" name="submit" value="Register">Register</Button>
+        <Button variant="primary" name="submit" value="Register" onClick={registerUser}>Register</Button>
       </div>
     </form>
   );
