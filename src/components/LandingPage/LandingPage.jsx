@@ -38,7 +38,7 @@ function LandingPage() {
             <RegisterForm />
             <center>
               <h4>Already a Member?</h4>
-              <Button onClick={onLogin}>
+              <Button id="land-log-btn" variant="light" onClick={onLogin}>
                 Login
             </Button>
             </center>
