@@ -70,7 +70,7 @@ const showQR = (event) => {
             {jobs.map(job =>
               <Col lg="4" md="6" sm="12" key={job.id}>
                 <div className="user-workOrder-div" key={job.id}>
-                  <Card className="workOrder-card" bg="secondary" border="info" text="white" key={job.id}>
+                  <Card className="workOrder-card" bg="light" border="dark" text="black" key={job.id}>
                     <Card.Header>Job id: {job.id}</Card.Header>
                     <Card.Body>
                       <Card.Title>Work Order Status: {(job.completed ? <div className='job-complete'>Complete</div> : <div className="job-not-complete">Not Complete</div>)}</Card.Title>
