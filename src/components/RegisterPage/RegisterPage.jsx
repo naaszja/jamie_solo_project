@@ -9,9 +9,9 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
-    <div>
+    <div className="reg-div">
+      <img id="landing-img" src="https://cdn2.apstatic.com/photos/mtb/93874_smallMed_1554167190.jpg"></img>
       <RegisterForm />
-
       <center>
         <Button id="log-btn" variant="light"
           onClick={() => {
