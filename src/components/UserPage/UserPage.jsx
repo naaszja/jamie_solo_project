@@ -80,8 +80,8 @@ const showQR = (event) => {
                         <p>Estimate: ${job.total_price}</p>
                         <p>Bike id: {job.bike_id}</p>
                       </Card.Text>
-                      {(user.accesslvl === 1) ? <Button value={job.id} variant="warning" size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <Button variant="success" onClick={showQR} size="block" value={job.id}>Check-In QR</Button>}
-                      <Button variant="danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
+                      {(user.accesslvl === 1) ? <Button id="select-job-btn" variant="light" value={job.id} size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <Button variant="outline-primary" className="cust-btns" onClick={showQR} size="block" value={job.id}>Check-In QR</Button>}
+                      <Button id="delete-job-btn" variant="danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
                     </Card.Body>
                   </Card>
                 </div>
@@ -89,8 +89,8 @@ const showQR = (event) => {
             )}
           </Row> : <em><p>(No Work Orders to Display)</p></em>}
         <hr />
-        <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getEquipmentList}>View Equipment List</Button> : <Button onClick={getEquipmentList}>View Equipment List</Button>}</p>
-        <p>{(user.accesslvl === 1) ? <Button variant="warning" onClick={getCustomerList}>Personal Information</Button> : <Button onClick={getCustomerList}>Personal Information</Button>}</p>
+        <p>{(user.accesslvl === 1) ? <Button variant="secondary" onClick={getEquipmentList}>View Equipment List</Button> : <Button className="cust-btns" variant="outline-primary" onClick={getEquipmentList}>View Equipment List</Button>}</p>
+        <p>{(user.accesslvl === 1) ? <Button variant="secondary" onClick={getCustomerList}>Personal Information</Button> : <Button className="cust-btns" variant="outline-primary" onClick={getCustomerList}>Personal Information</Button>}</p>
         <LogOutButton className="btn" />
       </div>
     </Container>

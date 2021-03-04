@@ -27,3 +27,17 @@
 .container {
     color: white;
 }
+
+#select-job-btn {
+    color: white;
+    background-color: lightseagreen;
+}
+
+#delete-job-btn {
+    color: white;
+    border: solid white 1px;
+}
+
+.cust-btns {
+    background-color: white;
+}
