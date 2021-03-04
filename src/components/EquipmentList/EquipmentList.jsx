@@ -48,9 +48,10 @@ function EquipmentList() {
                                             <p className="bike-p">Make: {bike.make}</p>
                                             <p className="bike-p">Model: {bike.model}</p>
                                             <p className="bike-p">Year: {bike.year}</p>
+                                            <p className="bike-p">Owner: User #{bike.user_id}</p>
                                         </Card.Text>
                                         <div className="cntrl-div">
-                                            <Button size="block" onClick={checkIn} value={bike.id}>Check-In</Button>
+                                            {(bike.user_id === user.id ) ? <Button size="block" onClick={checkIn} value={bike.id}>Check-In</Button> : <></>}
                                             <Button variant="danger" size="block" onClick={deleteEquipment} value={bike.id}>Delete</Button>
                                         </div>
                                     </Card.Body>
