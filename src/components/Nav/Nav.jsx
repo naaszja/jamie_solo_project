@@ -20,7 +20,7 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Pit-Stop Bike Shop</h2>
+        <h2 className="nav-title">Mobile Bike Doc</h2>
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
