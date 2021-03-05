@@ -77,7 +77,7 @@ function UserInput() {
             <>
                 <Row>
                     <Col xs={12} md={8} lg={6}>
-                        <Card bg="dark" text="white">
+                        <Card id="update-user-card" bg="light" border="dark">
                             <Card.Body>
                                 <Card.Text>
                                     <table id='update-table'>
@@ -99,7 +99,7 @@ function UserInput() {
                                         </tr>
                                     </table>
                                 </Card.Text>
-                                <Button variant="primary" size="block" onClick={addUser}>Save</Button>
+                                <Button variant="outline-info" size="block" onClick={addUser}>Save</Button>
                             </Card.Body>
                         </Card>
                     </Col>

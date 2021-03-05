@@ -52,7 +52,7 @@ function EquipmentList() {
                                         </Card.Text>
                                         <div className="cntrl-div">
                                             {(bike.user_id === user.id ) ? <Button variant="outline-info" size="block" onClick={checkIn} value={bike.id}>Check-In</Button> : <></>}
-                                            <Button variant="danger" size="block" onClick={deleteEquipment} value={bike.id}>Delete</Button>
+                                            <Button variant="outline-danger" size="block" onClick={deleteEquipment} value={bike.id}>Delete</Button>
                                         </div>
                                     </Card.Body>
                                 </Card>

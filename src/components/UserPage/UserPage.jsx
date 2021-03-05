@@ -79,8 +79,8 @@ const showQR = (event) => {
                         <p>Estimate: ${job.total_price}</p>
                         <p>Bike id: {job.bike_id}</p>
                       </Card.Text>
-                      {(user.accesslvl === 1) ? <Button id="select-job-btn" variant="light" value={job.id} size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <Button variant="outline-primary" className="cust-btns" onClick={showQR} size="block" value={job.id}>Check-In QR</Button>}
-                      <Button id="delete-job-btn" variant="danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
+                      {(user.accesslvl === 1) ? <Button variant="outline-info" value={job.id} size="block" onClick={fetchSingleWorkOrder}>Select Job</Button> : <Button variant="outline-primary" className="cust-btns" onClick={showQR} size="block" value={job.id}>Check-In QR</Button>}
+                      <Button id="delete-job-btn" variant="outline-danger" size="block" onClick={deleteWorkOrder} value={job.id}>Delete</Button>
                     </Card.Body>
                   </Card>
                 </div>
