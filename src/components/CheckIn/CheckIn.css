@@ -1,11 +1,13 @@
 #checkIn-div {
+    justify-content: center;
+    margin: auto;
+    width: 80%;
     text-align: center;
-    /* background-color: lightgray; */
-}
-
-#checkIn-div h1 {
-    text-decoration: underline;
-    color: white;
+    background-color: #6C757D;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
 }
 
 .radio-good {
@@ -20,16 +22,18 @@
     color: crimson;
 }
 
-#radios-div {
-    width: 40%;
-    display: inline-block;
-    margin: auto;
-    text-align: justify;
-}
-
 #score-out {
     position: fixed;
+    color: white;
     right: 0;
     bottom: 0;
 }
 
+#checkin-sub-btn {
+    margin: 1em;
+    color: #6C757D;
+}
+
+#checkIn-table {
+    color: white;
+}
