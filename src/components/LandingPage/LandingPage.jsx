@@ -37,7 +37,7 @@ function LandingPage() {
           <Col>
           <center>
           <h1 id="welcome-h1">Welcome!</h1>
-          <p id="welcome-p">Hello there! What brings us together? Whether something's broken, 
+          <p id="welcome-p">What brings us together? Whether something's broken, 
             it's that time of year again, something isn't behaving quite right, or maybe
             you just want to be ready for that big ride coming up. Use the from below to login 
             or register so we can get started!</p>
