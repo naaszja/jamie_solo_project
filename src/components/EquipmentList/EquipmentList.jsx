@@ -39,9 +39,9 @@ function EquipmentList() {
             <div className='equipment-list'>
                 <Row>
                     {bikes.map(bike =>
-                        <Col lg="4" sm="8" xs="12" key={bike.id}>
+                        <Col lg="4" sm="6" xs="10" key={bike.id}>
                             <div className="user-workOrder-div" >
-                                <Card className="equipment-cards" bg="secondary" border="info" text="white" key={bike.id}>
+                                <Card className="equipment-cards" bg="light" border="dark" key={bike.id}>
                                     <Card.Header><h4>Bike id: {bike.id}</h4></Card.Header>
                                     <Card.Body>
                                         <Card.Text>
@@ -51,7 +51,7 @@ function EquipmentList() {
                                             <p className="bike-p">Owner: {(user.id === bike.user_id) ? <>You Own This Bike</> : <>User #{bike.user_id}</>}</p>
                                         </Card.Text>
                                         <div className="cntrl-div">
-                                            {(bike.user_id === user.id ) ? <Button size="block" onClick={checkIn} value={bike.id}>Check-In</Button> : <></>}
+                                            {(bike.user_id === user.id ) ? <Button variant="outline-info" size="block" onClick={checkIn} value={bike.id}>Check-In</Button> : <></>}
                                             <Button variant="danger" size="block" onClick={deleteEquipment} value={bike.id}>Delete</Button>
                                         </div>
                                     </Card.Body>

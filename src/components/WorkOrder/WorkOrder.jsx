@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import './WorkOrder.css';
 
 function WorkOrder() {
 
@@ -22,7 +23,7 @@ function WorkOrder() {
 
     useEffect(() => {
         dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: params.id });
-    }, []);    
+    }, []);
 
     const completeWorkOrder = (e) => {
         console.log('in complete work order function');
@@ -38,28 +39,35 @@ function WorkOrder() {
         history.push('/user')
     }
 
-    let status = '';
-
-    if (job.status) {
-        status = 'Complete'
-    } else if (!job.status) {
-        status = 'Not Complete'
-
-    }
+    // if (job.completed) {
+    //     status = 'Complete'
+    // } else if (!job.completed) {
+    //     status = 'Not Complete'
+    // }
 
     return (
-        <div className='workOrder'>
-            <div className="workOrder-div" key={job.id}>
-                <h4>Status: {status}</h4>
-                <p> Job id: {job.id}</p>
-                <p>Services:</p>
-                <p>{job.services}</p>
-                <p>Estimate: ${job.total_price}</p>
-                <p>Bike id: {job.bike_id}</p>
-                <hr />
-                <p><Button variant="warning" size="sm" onClick={completeWorkOrder} value={job.id}>Complete Job</Button></p>
-            </div>
-        </div>
+        <Container>
+            <h4>User: {user.username}</h4>
+            <hr />
+            <Row>
+                <Col lg="4" md="6" sm="10" xs="12" >
+                    <Card className="workOrder-card" bg="light" border="dark" text="black" key={job.id}>
+                        <Card.Header>Job id: {job.id}</Card.Header>
+                        <Card.Body>
+                            <Card.Title>Status: <span id="single-status">{status}</span></Card.Title>
+                            <Card.Text className="workOrder-card-text">
+                                <p>Services:</p>
+                                <p>- {job.services}</p>
+                                <p>Estimate: ${job.total_price}</p>
+                                <p>Bike id: {job.bike_id}</p>
+                            </Card.Text>
+                            <p><Button variant="secondary" size="block" onClick={completeWorkOrder} value={job.id}>Complete</Button></p>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            </Row>
+            <hr />
+        </Container>
     );
 }
 

@@ -48,11 +48,11 @@ function EquipmentInput() {
 
     return (
         <div id='customer-input'>
-            <h4>To enter a new bike, please use the form below.</h4>
+            <h4 id="input-text">To enter a new bike, please use the form below.</h4>
             <br />
             <Row>
-                <Col xs="12" sm="8" lg="4">
-                    <Card bg="dark" text="white">
+                <Col xs="10" sm="6" lg="4">
+                    <Card id="input-card" bg="light" border="dark">
                         <Card.Body>
                             <Card.Text>
                                 <table id='input-table'>
@@ -70,7 +70,7 @@ function EquipmentInput() {
                                     </tr>
                                 </table>
                             </Card.Text>
-                            <Button variant="primary" size="block" onClick={addEquipment}>Save</Button>
+                            <Button variant="outline-info" size="block" onClick={addEquipment}>Save</Button>
                         </Card.Body>
                     </Card>
                 </Col>

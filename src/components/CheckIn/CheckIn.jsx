@@ -132,7 +132,7 @@ function CheckIn() {
 
     return (
         <div id='checkIn-div'>
-            <h1>Let's Talk About Your Bike</h1>
+            <h1>Let's See What We're Working With</h1>
             <div id='radios-div'>
                 <h3 id='score-out'>Current Score: {sum}/40 -- {(sum / 40) * 100}%</h3>
                 <hr />

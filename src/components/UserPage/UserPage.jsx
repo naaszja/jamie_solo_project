@@ -68,10 +68,10 @@ const showQR = (event) => {
         {(jobs.length > 0) ?
           <Row>
             {jobs.map(job =>
-              <Col lg="4" md="6" sm="12" key={job.id}>
+              <Col lg="4" md="6" sm="10" xs="12" key={job.id}>
                 <div className="user-workOrder-div" key={job.id}>
                   <Card className="workOrder-card" bg="light" border="dark" text="black" key={job.id}>
-                    <Card.Header>Job id: {job.id}</Card.Header>
+                    <Card.Header className="card-head-id">Job id: {job.id}</Card.Header>
                     <Card.Body>
                       <Card.Title>Work Order Status: {(job.completed ? <div className='job-complete'>Complete</div> : <div className="job-not-complete">Not Complete</div>)}</Card.Title>
                       <Card.Text className="workOrder-card-text">
@@ -93,7 +93,6 @@ const showQR = (event) => {
         <LogOutButton className="btn" />
       </div>
     </Container>
-
   );
 }
 
