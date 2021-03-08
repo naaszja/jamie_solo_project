@@ -61,7 +61,7 @@ const showQR = (event) => {
     <Container>
       <div className="container">
         <h2>Welcome, {user.username}!</h2>
-        <p>Your ID is: {user.id}</p>
+        {/* <p>Your ID is: {user.id}</p> */}
         <p>Access Level: {access} </p>
         <h4>Current Work Orders</h4>
         <hr />

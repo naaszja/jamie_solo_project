@@ -5,3 +5,7 @@
 .completed {
     color: green;
 }
+
+#complete-job-btn {
+    color: lightseagreen;
+}

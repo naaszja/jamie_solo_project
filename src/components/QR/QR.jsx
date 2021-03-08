@@ -26,7 +26,13 @@ function QR() {
                 <QRCode
                     level="Q"
                     style={{ width: 256 }}
-                    value={`${workOrderURL}`}
+                    value={
+                        `${workOrderURL}`
+                        // JSON.stringify({
+                        //     userName:"Jamie",
+                        //     email:"naaszja@gmail.com",
+                        // })
+                    }
                 />
             </div>
             <p id="qr-btn"><Button variant="primary" onClick={() => history.push('/user')}>Close QR Code</Button></p>

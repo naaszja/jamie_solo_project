@@ -140,7 +140,7 @@ function CheckIn() {
                     <Table id='checkIn-table' hover size="sm">
                         <thead>
                             <tr>
-                                <th colSpan="4"><h1>Let's See What We're Working With</h1></th>
+                                <th id='thead-h1'colSpan="4"><h1>What are we working with?</h1></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -326,7 +326,8 @@ function CheckIn() {
                             </tr>
                         </tbody>
                     </Table>
-                    <h3 id='score-out'>{sum}/40 -- {Math.floor((sum / 40) * 100)}%</h3>
+                    {/* 'Score' indicicator out of a possible 40 points
+                    <h3 id='score-out'>{sum}/40 -- {Math.floor((sum / 40) * 100)}%</h3> */}
                     <Button id="checkin-sub-btn" variant="light" onClick={submitCheckIn}>Submit Check-In</Button>
                     </div>
                 </Col>

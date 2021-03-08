@@ -11,7 +11,7 @@
 }
 
 .radio-good {
-    color: forestgreen;
+    color: lightgreen;
 }
 
 .radio-maintenance {
@@ -35,6 +35,10 @@
 }
 
 #checkIn-table {
-    /* width: 60%; */
-    color: white;
+text-align: left;
+color: white;
+}
+
+#thead-h1 {
+    text-align: center;
 }
