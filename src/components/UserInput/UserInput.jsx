@@ -40,7 +40,7 @@ function UserInput() {
             return;
         }
 
-        // Object that conglomorates input to be sent off in the payload
+        // newUser object to send input to be sent off in the dispatch
         const newUser = {
             firstName,
             lastName,
@@ -51,7 +51,7 @@ function UserInput() {
 
         console.log(`new user is:`, newUser);
 
-        // Action to update user info in the user table
+        // Action to update user info in the db
         dispatch({
             type: 'ADD_USER',
             payload: {
@@ -69,6 +69,7 @@ function UserInput() {
         setPhone('');
         setEmail('');
 
+        // Refresh the window so the update for disappears and the user information is refreshed
         window.location.reload();
     }
 

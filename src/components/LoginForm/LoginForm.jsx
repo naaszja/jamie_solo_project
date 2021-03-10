@@ -6,12 +6,21 @@ import Button from 'react-bootstrap/Button';
 import './LoginForm.css';
 
 function LoginForm() {
+
+  // State to hold the username and password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  // Bring in the errors portion of our store
   const errors = useSelector(store => store.errors);
+
+  // Instantiate useDispatch to communicate with our sags
   const dispatch = useDispatch();
+
+  // Instantiat useHistory for navigation
   const history = useHistory();
 
+  // Funtion to handle the submission of username and password.
   const login = (event) => {
     event.preventDefault();
 

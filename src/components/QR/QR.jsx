@@ -8,6 +8,7 @@ import './QR.css'
 
 function QR() {
 
+    // Instantiate useParams so we can capture the job id that is passed in via the url
     const params = useParams();
 
     // Instantiate useHistory for navigation purposes
@@ -17,6 +18,7 @@ function QR() {
     const user = useSelector(store => store.user);
     const id = params.id;
 
+    // URL that will be embedded in the QR code, along with the 'id' added to the end
     const workOrderURL = `https://nameless-tor-68673.herokuapp.com/#/workOrder/${id}`
 
     return (
@@ -26,8 +28,11 @@ function QR() {
                 <QRCode
                     level="Q"
                     style={{ width: 256 }}
-                    value={
-                        `${workOrderURL}`
+                    value={`${workOrderURL}`
+                        
+                        // This was used as a proof of concept that a JSON can be stringified, 
+                        // passed to another system, and re-objectified (I may have made that term up)
+
                         // JSON.stringify({
                         //     userName:"Jamie",
                         //     email:"naaszja@gmail.com",

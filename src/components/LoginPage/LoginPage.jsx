@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
 import './LoginPage.css';
 
-
+//Form to allow use to enter login credentials
 function LoginPage() {
   const history = useHistory();
 

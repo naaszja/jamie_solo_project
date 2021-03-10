@@ -13,37 +13,45 @@ import './WorkOrder.css';
 
 function WorkOrder() {
 
+    // Instantiat useParams so parameters can be passed/grabbed through the url
     const params = useParams();
+
+    // Instantiate useDispatch so we can communicate with our sagas
     const dispatch = useDispatch();
+
+    // Instantiate useHistory for navigation 
     const history = useHistory();
 
+    // Bring in our user and single work order reducers
     const user = useSelector(store => store.user);
     const job = useSelector(store => store.singleWorkOrderReducer);
+
+    // Log for debugging purposed
     console.log(`Job is :`, job);
 
+    // useEffect will refresh the page and display the single selected work order
     useEffect(() => {
         dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: params.id });
     }, []);
 
+    // Function to handle the completing a work order. 
     const completeWorkOrder = (e) => {
         console.log('in complete work order function');
         alert('Work order completed successfully.')
 
+        // Sets the user.id and job.id on the completed job for records purposes
         const details = {
             tech_id: user.id,
             job_id: e.target.value,
         }
+
+        // Dispatches to complete a single job and then refresh the work orders list
         dispatch({ type: 'COMPLETE_WORKORDER', payload: details });
         dispatch({ type: 'FETCH_WORKORDERS' });
 
+        // Navigate the user back to the landing page upon job completion
         history.push('/user')
     }
-
-    // if (job.completed) {
-    //     status = 'Complete'
-    // } else if (!job.completed) {
-    //     status = 'Not Complete'
-    // }
 
     return (
         <Container>

@@ -9,23 +9,16 @@ import './LandingPage.css';
 
 // CUSTOM COMPONENTS
 import RegisterForm from '../RegisterForm/RegisterForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 
 function LandingPage() {
 
-  // Set the heading dispaly purposes only
+  // Set the heading display purposes only
   const [heading, setHeading] = useState('Welcome');
 
   // Instantiate useHistory for navigation purposes
   const history = useHistory();
 
-  // Instantiate useDispatch to fetch the current customers information
-  const dispatch = useDispatch();
-
-  // Bring in the store so we can access the user information
-  const store = useSelector(store => store);
-
+  // Navigate to proper page upon login validation
   const onLogin = (event) => {
     history.push('/login');
   };

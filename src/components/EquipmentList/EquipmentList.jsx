@@ -14,21 +14,28 @@ import EquipmentInput from '../EquipmentInput/EquipmentInput';
 
 function EquipmentList() {
 
+    // Bring in the 'user' and 'equipment' portions of our store
     const user = useSelector(store => store.user);
     const bikes = useSelector(store => store.equipmentReducer);
 
+    // Instantiate use history for navigation
     const history = useHistory();
+
+    // Instantiate useDispatch to communicate with sagas
     const dispatch = useDispatch();
 
+    // useEffect 
     useEffect(() => {
         dispatch({ type: 'FETCH_EQUIPMENT', payload: user })
     }, []);
 
+    // Function to navigate to the check-in page with a specific equipment_id
     const checkIn = (event) => {
         console.log('Job id:', event.target.value);
         history.push(`/checkin/${event.target.value}`);
     }
 
+    // Function to delete a piece of equipment from the db by id
     const deleteEquipment = (event) => {
         console.log('In deleteEquipment() with an id of:', event.target.value);
         dispatch({ type: 'DELETE_EQUIPMENT', payload: event.target.value })

@@ -10,22 +10,27 @@ import './EquipmentInput.css';
 
 function EquipmentInput() {
 
-    const history = useHistory();
+    // Instantiate useDispatch to communicate with our sagas
     const dispatch = useDispatch();
-    const store = useSelector(store => store);
-    const equipments = useSelector(store => store.equipmentReducer);
 
+    // Bring in our store instance
+    const store = useSelector(store => store);
+
+    // State to hold the make, model, and year of the equipment entered by the user
     const [make, setMake] = useState('');
     const [model, setModel] = useState('');
     const [year, setYear] = useState('');
 
+    // Function to handle the equpiment input
     const addEquipment = () => {
 
+        // Validate inputs to make sure all are inputs were used
         if (!make || !model || !year) {
             alert('Error! Please fill in all fields.');
             return;
         }
 
+        // Create a new equipment object containing the user input
         const newEquipment = {
             make,
             model,
@@ -33,13 +38,16 @@ function EquipmentInput() {
             user_id: store.user.id,
         }
 
+        // Log is for debugging
         console.log(`new equipment is:`, newEquipment);
 
+        // Dispatch our action and payload to created a new equipment entry in the db
         dispatch({
             type: 'ADD_EQUIPMENT',
             payload: newEquipment,
         });
 
+        // Clear the input fields
         setMake('');
         setModel('');
         setYear('');

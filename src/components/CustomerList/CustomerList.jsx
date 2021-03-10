@@ -13,20 +13,29 @@ import UserInput from '../UserInput/UserInput';
 
 function CustomerList() {
 
+    // Instantiate dispatch so we can communicate with our sagas
     const dispatch = useDispatch();
+
+    // A piece of state to control the conditional rendering of our update user information form
     const [editMode, setEditMode] = useState(false);
 
+    // useEffect will fetch the user information upon page load
     useEffect(() => {
         dispatch({ type: 'FETCH_CUSTOMERS' })
     }, []);
 
+    // Bring in the user portion of our store
     const user = useSelector(store => store.user);
+
+    // Log for debugging
     console.log('User:', user);
 
+    // Function to control the state of our state. When true the update form will display, false it will not
     const updateUser = () => {
         setEditMode(!editMode);
     }
 
+    // Function to delete a user from the db by user.id
     const deleteUser = (e) => {
         dispatch({ type: 'DELETE_CUSTOMER', payload: e.target.value })
     }
@@ -52,7 +61,7 @@ function CustomerList() {
                             </Card>
                         </Col>
                     </Row>
-                    {(editMode ? <><hr /><UserInput/></> : <></>)}
+                    {(editMode ? <><hr /><UserInput /></> : <></>)}
                 </Container>
             </div>
         </div>

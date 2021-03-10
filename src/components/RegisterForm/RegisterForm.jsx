@@ -5,14 +5,22 @@ import Button from 'react-bootstrap/Button';
 import './RegisterForm.css';
 
 function RegisterForm() {
+
+  // State to hole username and password
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  
+  // Bring in errors reducer from our store
   const errors = useSelector((store) => store.errors);
+
+  // Instantiate useDispatch to communicate with our sagas
   const dispatch = useDispatch();
 
+  // Function to handle the submission of a new users information
   const registerUser = (event) => {
     event.preventDefault();
 
+    // Dispatch our new users info to have a new entry created in the db
     dispatch({
       type: 'REGISTER',
       payload: {

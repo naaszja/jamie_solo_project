@@ -13,22 +13,27 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 function UserPage() {
-  
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
+
+  // Bring in our user reducer for information
   const user = useSelector((store) => store.user);
+
+  // Instantiate useDispatch so we can communicate with our sagas
   const dispatch = useDispatch();
 
+  // Bring in our work order reducer from our store
   const jobs = useSelector(store => store.workOrderReducer);
 
-
+  // useEffect with refresh the work order list upon page load
   useEffect(() => {
     dispatch({ type: 'FETCH_WORKORDERS' })
   }, []);
 
+  // Fetch a single work order with a specific work order id
   const fetchSingleWorkOrder = (event) => {
     history.push(`/workOrder/${event.target.value}`);
   }
 
+  // Delete a single work order by id
   const deleteWorkOrder = (event) => {
     console.log('Job id:', event.target.value);
     dispatch({ type: 'DELETE_WORKORDER', payload: event.target.value });
@@ -48,11 +53,11 @@ function UserPage() {
   }
 
   // Funtion to show the QR code containing user, bike, and workorder information
-const showQR = (event) => {
-  console.log('Job id:', event.target.value)
-  dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
-  history.push(`/qr/${event.target.value}`);
-} 
+  const showQR = (event) => {
+    console.log('Job id:', event.target.value)
+    dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value });
+    history.push(`/qr/${event.target.value}`);
+  }
 
   // Set the access setting based on the accesslvl in the DB
   const access = ((user.accesslvl === 1) ? "Admin" : "Customer");

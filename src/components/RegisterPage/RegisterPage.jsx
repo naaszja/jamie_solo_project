@@ -6,6 +6,8 @@ import RegisterForm from '../RegisterForm/RegisterForm';
 import './RegisterPage.css';
 
 function RegisterPage() {
+
+  // Instantiate useHistory for navigation purposes
   const history = useHistory();
 
   return (

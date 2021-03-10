@@ -5,6 +5,8 @@ import './Nav.css';
 import { useSelector } from 'react-redux';
 
 function Nav() {
+
+  // Bring in the user portion of our store. Used for information and validation
   const user = useSelector((store) => store.user);
 
   let loginLinkData = {
