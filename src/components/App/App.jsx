@@ -8,11 +8,14 @@ import {
 
 import { useDispatch } from 'react-redux';
 
+// Bring in our navbar and footer components
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
 
+// Enable route protection (require login)
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
+// Bring in our individual pages for our route navigation
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -26,6 +29,7 @@ import CustomerList from '../CustomerList/CustomerList';
 import CheckIn from '../CheckIn/CheckIn';
 import QR from '../QR/QR';
 
+// basic local css
 import './App.css';
 
 
@@ -111,7 +115,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/workOrders"
             // - else shows LandingPage at "/home"
             exact
             path="/workOrders"
@@ -121,7 +125,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to a single work order by id "/workOrder/:id"
             // - else shows LandingPage at "/home"
             exact
             path="/workOrder/:id"
@@ -131,7 +135,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to "/equipmentList"
             // - else shows LandingPage at "/home"
             exact
             path="/equipmentList"
@@ -160,7 +164,7 @@ function App() {
 
           <ProtectedRoute
             // with authRedirect:
-            // - if logged in, redirects to "/user"
+            // - if logged in, redirects to show the QR code "/qr/:id"
             // - else shows LandingPage at "/home"
             path="/qr/:id"
           >

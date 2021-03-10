@@ -5,9 +5,10 @@ const {
     rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-// GET route
+// GET route fetches work orders based on the users 'accesslvl'
 router.get('/', rejectUnauthenticated, (req, res) => {
 
+    // if the user has an accesslvl of 1, they will get back all work orders
     if (req.user.accesslvl === 1) {
         const queryText = `SELECT * FROM "work_orders" ORDER BY "completed" ASC;`;
         pool.query(queryText)
@@ -17,6 +18,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
                 console.log('Error fetching work orders:', error);
             });
     } else {
+        // if the user has an accesslvl of 0, they will only get back work orders that 'belong' to them
         const queryText = `SELECT * FROM "work_orders" WHERE "user_id" = $1 ORDER BY "completed" ASC;`;
         pool.query(queryText, [req.user.id])
             .then((result) => {
@@ -40,7 +42,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-// POST route
+// POST route will add a new workorder to the table 
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newWorkOrder = req.body;
     console.log('New work order is:', newWorkOrder);
@@ -58,7 +60,8 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// PUT route
+// PUT route will allow an admin user to update a work order to complete. This will also timestamp when the
+// work was completed and by who
 router.put('/', rejectUnauthenticated, (req, res) => {
     const techId = req.body.tech_id;
     const jobId = req.body.job_id;
@@ -81,7 +84,7 @@ router.put('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-//DELETE route
+//DELETE route will delete any single work order by id
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const jobId = Number(req.params.id);
     debugger;

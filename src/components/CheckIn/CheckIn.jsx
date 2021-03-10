@@ -1,12 +1,7 @@
 import React from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
-//Bring in bootstrap components and css
-// import Card from 'react-bootstrap/Card';
-// import Container from 'react-bootstrap/Container';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Table from 'react-bootstrap/Table';
 import Row from 'react-bootstrap/Row';
@@ -16,11 +11,15 @@ import './CheckIn.css';
 
 function CheckIn() {
 
+    // Instantiate params, dispatch, and history for later use
     const params = useParams();
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // Bring in our store (at least the user part for the information)
     const user = useSelector(store => store.user);
+
+    // These two logs are for debugging purposes
     console.log('User:', user);
     console.log('Params:', params);
 
@@ -47,10 +46,14 @@ function CheckIn() {
     const [brakePads, setBrakePads] = useState(0);
     const [bikeId, setBikeId] = useState(params.id);
 
+    // sum will accumulate the ratings from each part to give the bike an overall 'score'
     const sum = (rearTire + frontTire + tubes + frame + derHanger + bottomBracket + headset + seatpost + fork + chain + cassette + chainring + cablesHouse + shifterDerailleur + rims + spokes + hubs + brakeCaliper + brakeLever + brakePads);
 
+
+    // Cost estimate for the work as prescribed by the check-in process
     let estimate = 0;
 
+    // Using the percentage of the sum/total to assign a rough erstimate of price. 
     if (sum >= 35) {
         estimate = 40;
     } else if (sum < 35 && sum >= 30) {
@@ -63,6 +66,8 @@ function CheckIn() {
         estimate = 300;
     }
 
+    // Funciton to handle the click of the 'submit check-in' button. It will first create a new object with
+    // all of the check-in data and then dispatch to our saga/reducer
     const submitCheckIn = () => {
 
         const newCheckIn = {
@@ -90,16 +95,21 @@ function CheckIn() {
             bikeId,
         }
 
+        // Dispatch action to create a new check-in record
         dispatch({ type: 'ADD_CHECKIN', payload: newCheckIn })
 
+        // Basic tune-up packages offered. One key will be selected and assigned
+        // based on the percentage of points in the check-in form
         const recommendation = {
             basic: 'Basic tune-up',
             comp: 'Comprehensive tune-up',
             overhaul: 'Complete overhaul',
         }
 
+        // Create a new work order object
         let newWorkOrder = {};
 
+        // Assign the new work order's keys based on the cost estimate
         if (estimate <= 80) {
             newWorkOrder = {
                 services: recommendation.basic,
@@ -123,11 +133,16 @@ function CheckIn() {
             }
         }
 
+        // Log for debugging
         console.log(`New work order:`, newWorkOrder);
 
+        // Dispatch our new work order to create a new entry in the work orders table
         dispatch({ type: 'ADD_WORKORDER', payload: newWorkOrder })
 
+        // Notify the user that the check-in was submitted successfully
         alert(`Check-in submitted successfully!`);
+
+        // Reload the local window so the the state is updated
         window.location.reload;
         history.push('/user')
 
@@ -145,6 +160,10 @@ function CheckIn() {
                         </thead>
                         <tbody>
                             <tr>
+                                {/* Each major component/areas of the bike will be assessed by the user and assigned a 'rating' with
+                                the following radio groups. A rating of 'good' will warrant 2 points, 'preventative' will warrant 1
+                                point, and 'replace' will warrant 0. A summation of the assigned points will lead to the recommendations
+                                given to the customer */}
                                 <td>Front Tire</td>
                                 <td><input className='radio-good' name='front_tire' value={frontTire} type="radio" onClick={() => setFrontTire(2)} />
                                     <label className='radio-good' htmlFor='front_tire'> Good</label></td>

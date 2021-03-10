@@ -5,7 +5,7 @@ const {
     rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-// POST route
+// POST route takes the input from the user on the check-in page. SQL request inserts user responses into the services table
 router.post('/:id', rejectUnauthenticated, (req, res) => {
     const newCheckIn = req.body;
     console.log('newCheckIn is: ', newCheckIn);

@@ -5,7 +5,7 @@ const {
     rejectUnauthenticated,
 } = require('../modules/authentication-middleware');
 
-// GET route
+// GET route * not currently used in the program. Thill pull all users and all details *
 router.get('/', rejectUnauthenticated, (req, res) => {
     const queryText = `SELECT * FROM "user" ORDER BY "lastName" ASC;`;
     pool.query(queryText)
@@ -16,7 +16,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
         });
 });
 
-// PUT route
+// PUT route allows the user to update personal information. 
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newCustomer = req.body;
     console.log(newCustomer);
@@ -32,7 +32,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// DELETE route
+// DELETE route deletes the user, all details and any bike, check-in, or work order that references the user.
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log(req.params);
     debugger;

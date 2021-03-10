@@ -10,6 +10,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
     console.log(req.user);
 
+    // set the sql query based on the users 'accesslvl'. An admin will have an accesslvl of 1 and
+    // all entries in the table will be returned. A customer will have and accesslvl of 0 and will only
+    // have entries that reference their id returned
     if (req.user.accesslvl === 1) {
         const queryText = `SELECT * FROM "equipment" ORDER BY "id" ASC;`;
         console.log(queryText);
@@ -32,7 +35,8 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 });
 
-// POST route
+// POST route allows a user to enter a new entry to the equipment table by entering a 
+// make, a model, and a year.
 router.post('/', rejectUnauthenticated, (req, res) => {
     const newEquipment = req.body;
     console.log(newEquipment);
@@ -47,7 +51,7 @@ router.post('/', rejectUnauthenticated, (req, res) => {
         })
 });
 
-// Delete route
+// Delete route removes an entry from the equipment table.
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     const idToDelete = req.params.id;
     const queryText = `DELETE FROM "equipment" WHERE "id" = $1;`;
