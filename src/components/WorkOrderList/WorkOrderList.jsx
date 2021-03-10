@@ -13,16 +13,24 @@ import Col from 'react-bootstrap/Col';
 
 function WorkOrderList() {
 
+    // Instantiate useDispatch to allow communication with sagas
     const dispatch = useDispatch();
+
+    // Instantiate use History for navigation
     const history = useHistory();
+
+    //Bring in our user reducer from the store
     const user = (store => store.user);
 
+    // useEffect will refresh the lish of work orders every time the page is loaded
     useEffect(() => {
         dispatch({ type: 'FETCH_WORKORDERS' })
     }, []);
 
+    // Bring in our work order reducer
     const jobs = useSelector(store => store.workOrderReducer);
 
+    // Funtion to take the id of the selected job and return a single work order
     const fetchSingleWorkOrder = (event) => {
         dispatch({ type: 'FETCH_SINGLE_WORKORDER', payload: event.target.value});
         history.push('/workOrder');
